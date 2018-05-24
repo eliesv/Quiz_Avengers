@@ -1,0 +1,24 @@
+<html>
+<body bgcolor="4C9FFF">
+<center>
+<img src="/img/resultado.png"><br><br>
+
+{% if x == "Thor" %}
+thor
+{% elif x == "Hulk" %}
+hulk
+{% elif x == "Captain America" %}
+Captain America
+{% elif x == "Iron Man" %}
+Iron Man
+{% endif %}
+
+<br><br>
+
+<form name="send-form" class="send-form" method="GET">
+<input type="submit" value="Continuar" formaction="/resultado">
+</form>
+</body>
+
+
+</html>
