@@ -44,7 +44,7 @@ def quiz():
         for i in idade:
             dicionario[i] += 1
         
-        lisperg = ["cidade","animal","planeta","esporte","olho","musica","camisa","filme","pedra","cor","comida","numero"]
+        lisperg = ["cidade","animal","planeta","esporte","olho","musica","camisa","filme","pedra","cor","comida","serie"]
         for i in lisperg:
             for a in f.multiplaescolha(i):
                 dicionario[a] += 1

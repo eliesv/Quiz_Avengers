@@ -83,10 +83,12 @@
         
         <br><br>
         
-        <form name="send-form" class="send-form" method="GET">
-            <input type="submit" value="Continuar" formaction="/resultado">
-            <br><br>
-            <input type="submit" value="Tirar outra foto" formaction="/red">
+        <form name="send-form" class="send-form" method="POST" action="/resultado">
+            <input type="submit" value="Continuar">
+        </form>
+            
+        <form name="send-form" class="send-form" method="GET" action="/camera">
+            <input type="submit" value="Tirar outra foto">
         </form>
         
     </body>
