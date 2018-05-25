@@ -3,7 +3,7 @@
 @authors: elies, freddyd, michelh
 """
 
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 import funcao as f
 import maxkey as m
 import idade as anos
@@ -14,7 +14,7 @@ import img_mail as mail
 app = Flask(__name__,static_url_path="")
 
 dicionario = {}
-vencedor = ""
+vencedor = "grtgtgre"
 Nome = ""
 
 @app.route("/")
@@ -37,7 +37,7 @@ def quiz():
         return render_template('quiz.html')
     
     if request.method == "POST":
-        
+        print("test")
         lista = ["Captain America","Iron Man","Hulk","Thor","Spider Man", "Doctor Strange", "Black Panther", "Peter Quill", "Vision", "Scarlet Witch", "Ant Man", "Rocket"]
         for i in lista:
             dicionario[i] = 0
@@ -54,15 +54,19 @@ def quiz():
         vencedor = m.maxkey(dicionario)
         print(dicionario)
         print(vencedor)
+        print(request.form)
 
-    return render_template("redirect.html")
+    return redirect("/red")
 
-@app.route("/redirect", methods=['GET', 'POST'])
-def redirect():
-    return render_template("camera.html", n = Nome)
+@app.route("/red", methods=['GET', 'POST'])
+def redi():
+    return redirect("/camera")
 
 @app.route('/camera', methods=['GET', 'POST'])
 def camera():
+    
+    if request.method == "GET":
+        return render_template("camera.html", n = Nome)
     
     if request.method == 'POST':
         print('Uploading...')
@@ -77,7 +81,7 @@ def camera():
 
         #imgData = request.content
 
-        print(imgData)
+        #print(imgData)
         
         print('Gravando...')
         
@@ -92,11 +96,11 @@ def camera():
         #script q abre a camera no flask
         #camera("Iron man","rr.jpg")
     
-    return render_template("resultado.html", v = vencedor)
+    return redirect("/resultado")
 
 @app.route("/resultado", methods=['POST','GET'])
 def resultado():
-    return render_template('email.html')
+    return render_template("resultado.html", v = vencedor)
 
 @app.route("/email", methods=['POST','GET'])
 def email():

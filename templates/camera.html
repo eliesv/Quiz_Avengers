@@ -13,11 +13,8 @@
         
         <h1>Agora só falta tirar uma foto, {{n}}!</h1>
         
-        <!--
-        <form name="send-form" class="send-form" method="GET" action="/camera">
-            <input type="image" name="submit" src="/img/spidey.jpg" width="450" border="0" alt="Submit" />
-        </form>
-        -->
+        
+
         
     
     <!--
@@ -40,7 +37,13 @@
       	<button onclick="uploadImage();">Upload Photo</button>
       	-->
 
-    <video onclick="snapshot(this);uploadImage();" width=400 height=400 id="video" autoplay></video>
+    <video width=400 height=400 id="video" autoplay></video>
+    
+    <canvas hidden  id="photoCanvas" width="400" height="300"></canvas>
+    
+        <form name="send-form" class="send-form" method="POST" action="/camera">
+            <input onclick="snapshot(this);uploadImage();" type="image" name="submit" src="/img/spidey.jpg" width="45" border="0" alt="Submit" />
+        </form>
 
   </body>
   
@@ -126,12 +129,12 @@ try {
       //Evia dados da imagem para o servidor via POST
     	var xhr = new XMLHttpRequest();
 
-    	xhr.open("POST","/uploadphoto", true);
+    	xhr.open("POST","/camera", true);
 
     	xhr.setRequestHeader("Content-type","image/png");
 
-		console.log(photoData); //debug
-
+		//console.log(photoData); //debug
+      console.log('Foto enviada...')//debug
 		xhr.send(photoData);
 
 	} //uploadImage

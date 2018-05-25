@@ -10,7 +10,19 @@ from flask import request
 def multiplaescolha(pergunta):
     x = ''
     lista = []
-    x = int(request.form[pergunta])
+    x = request.form[pergunta]
+    if x == "0":
+        x = 0
+    elif x == "1":
+        x = 1
+    elif x == "2":
+        x = 2
+    elif x == "3":
+        x = 3
+    elif x == "4":
+        x = 4
+    elif x == "5":
+        x = 5
         
     if pergunta == "cidade":
         if x == 0:
@@ -181,4 +193,3 @@ def multiplaescolha(pergunta):
             lista = ["Iron Man","Hulk"]
 
     return lista
-
