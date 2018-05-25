@@ -14,26 +14,22 @@ import img_mail as mail
 app = Flask(__name__,static_url_path="")
 
 dicionario = {}
-vencedor = "grtgtgre"
+vencedor = "aaa"
 Nome = ""
 
 @app.route("/")
 def introdução():
-#    Nome = request.form["nome"]
     return render_template("intro.html")
 
 @app.route("/adeus", methods=['POST','GET'])
 def adeus():
     return render_template('adeus.html')
 
-@app.route("/thanos", methods=['POST','GET'])
-def thanos():
-    return render_template('thanos.html')
-
 @app.route("/quiz", methods=['POST','GET'])
 def quiz():
       
     if request.method == "GET":
+        #Nome = request.form["nome"]
         return render_template('quiz.html')
     
     if request.method == "POST":
@@ -41,6 +37,8 @@ def quiz():
         lista = ["Captain America","Iron Man","Hulk","Thor","Spider Man", "Doctor Strange", "Black Panther", "Peter Quill", "Vision", "Scarlet Witch", "Ant Man", "Rocket"]
         for i in lista:
             dicionario[i] = 0
+            
+        #Nome = request.method["nome"]
 
         idade = anos.idade()
         for i in idade:
@@ -100,10 +98,24 @@ def camera():
 
 @app.route("/resultado", methods=['POST','GET'])
 def resultado():
-    return render_template("resultado.html", v = vencedor)
+    
+    if request.method == "GET":
+        return render_template("resultado.html", v = vencedor)
+
+    if request.method == "POST":
+        return redirect("/email")
 
 @app.route("/email", methods=['POST','GET'])
 def email():
-    emailto = request.form['email']
-    mail.send(emailto)
+    
+    if request.method == "GET":
+        return render_template("email.html")
+    
+    if request.method == "POST":
+        emailto = request.form['email']
+        mail.send(emailto)
     return render_template('emailsent.html', x = emailto)
+
+@app.route("/thanos", methods=['GET'])
+def thanos():
+    return render_template('thanos.html')
