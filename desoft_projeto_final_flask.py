@@ -8,8 +8,8 @@ import funcao as f
 import maxkey as m
 import idade as anos
 import img_mail as mail
-#from photos.Photos import camera
-#import cv2
+import Photos as p
+import cv2
 
 app = Flask(__name__,static_url_path="")
 
@@ -100,6 +100,7 @@ def camera():
 def resultado():
     
     if request.method == "GET":
+        p.overlay("Iron man")
         return render_template("resultado.html", v = vencedor)
 
     if request.method == "POST":

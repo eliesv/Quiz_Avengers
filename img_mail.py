@@ -18,7 +18,7 @@ def send(emailto):
     msg['Subject'] = "teste"
  
 
-    foto=open(r"\photos\vingador.png", "rb")
+    foto=open(r"vingador.png", "rb")
     msg.attach(MIMEImage(foto.read()))
     msg.attach(MIMEText("thanks for playing"))
  
