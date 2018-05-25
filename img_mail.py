@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri May 18 11:18:42 2018
-
-@author: elies
+@authors: elies, freddyd, michelh
 """
 
 from email.mime.multipart import MIMEMultipart
@@ -20,7 +18,7 @@ def send(emailto):
     msg['Subject'] = "teste"
  
 
-    foto=open(r"C:\Users\elies\Desktop\PF\photos\vingador.png", "rb")
+    foto=open(r"\photos\vingador.png", "rb")
     msg.attach(MIMEImage(foto.read()))
     msg.attach(MIMEText("thanks for playing"))
  

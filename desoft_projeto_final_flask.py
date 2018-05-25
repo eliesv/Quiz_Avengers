@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue May 15 13:17:23 2018
-
-@author: elies
+@authors: elies, freddyd, michelh
 """
 
 from flask import Flask, request, render_template
@@ -55,7 +53,12 @@ def quiz():
         print(dicionario)
         print(vencedor)
 
+    return render_template("redirect.html")
+
+@app.route("/redirect", methods=['GET', 'POST'])
+def redirect():
     return render_template("camera.html")
+
 
 @app.route("/camera", methods=['GET', 'POST'])
 def camera():

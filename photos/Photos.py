@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri May 18 12:30:15 2018
-@author: Freddy Dratwa
+@authors: elies, freddyd, michelh
 """
 import cv2
 
 def camera(vingador, imagem):
         
-    face_cascade = cv2.CascadeClassifier(r"C:/Users/elies/Desktop/PF/opencv/sources/data/haarcascades_cuda/haarcascade_frontalface_default.xml")
+    face_cascade = cv2.CascadeClassifier(r"C:/Users/Freddy Dratwa/Downloads/opencv/sources/data/haarcascades_cuda/haarcascade_frontalface_default.xml")
     foreground_image = cv2.imread('{}.png'.format(vingador), -1)
     
     foreground_mask = foreground_image[:, :, 3] 
@@ -52,7 +51,7 @@ def camera(vingador, imagem):
         roi_fg = cv2.bitwise_and(foreground_image, foreground_image, mask=foreground_mask)
         dst = cv2.add(roi_bg, roi_fg) 
         #nome e local do arquivo salvo
-        cv2.imwrite("vingador.png", dst) 
+        cv2.imwrite(r"\photos\vingador.png", dst) 
         cv2.waitKey()
         cv2.destroyAllWindows()
         break
