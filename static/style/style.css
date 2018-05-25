@@ -1,5 +1,6 @@
-body {
-    font-family: 'Marvel';font-size: 28px;
+body, {
+    font-family: 'Marvel';
+    font-size: 28px;
         }
 .a {
     background-color: #1a43d4;
@@ -7,9 +8,9 @@ body {
     color: white;
     padding: 15px 25px;
     text-align: center;
-    font-size: 16px;
     cursor: pointer;
 }
 .a:hover {
-    background-color: #173391;
+    //background-color: #173391;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24);
 }
