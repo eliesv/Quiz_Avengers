@@ -56,7 +56,7 @@ def quiz():
 
     return redirect("/red")
 
-@app.route("/red", methods=['GET', 'POST'])
+@app.route("/red", methods=['GET'])
 def redi():
     return redirect("/camera")
 
