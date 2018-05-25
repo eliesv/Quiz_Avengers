@@ -26,6 +26,10 @@ def introdução():
 def adeus():
     return render_template('adeus.html')
 
+@app.route("/thanos", methods=['POST','GET'])
+def thanos():
+    return render_template('thanos.html')
+
 @app.route("/quiz", methods=['POST','GET'])
 def quiz():
       
@@ -42,19 +46,25 @@ def quiz():
         for i in idade:
             dicionario[i] += 1
         
-        lisperg = ["city","animal","planeta","esporte","olho","musica","cor","filme"]
+        lisperg = ["cidade","animal","planeta","esporte","olho","musica","camisa","filme","pedra","cor","comida","numero"]
         for i in lisperg:
             for a in f.multiplaescolha(i):
                 dicionario[a] += 1
         
         vencedor = m.maxkey(dicionario)
         print(dicionario)
+        print(vencedor)
 
-    return render_template("resultado.html", x = vencedor)
+    return render_template("camera.html")
+
+@app.route("/camera", methods=['GET', 'POST'])
+def camera():
+    #script q abre a camera no flask
+    #    camera("Iron man","rr.jpg") 
+    return render_template("resultado.html", v = vencedor)
 
 @app.route("/resultado", methods=['POST','GET'])
 def resultado():
-#    camera("Iron man","rr.jpg") 
     return render_template('email.html')
 
 @app.route("/email", methods=['POST','GET'])

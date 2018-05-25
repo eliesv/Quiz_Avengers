@@ -1,5 +1,14 @@
 ﻿<html>
     
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Marvel' rel='stylesheet'>
+        <style>
+            body {
+                font-family: 'Marvel';font-size: 28px;
+            }
+        </style>
+    </head>   
+    
     <body><center>
     
         <img src="/img/spoiler_alert.png">
@@ -10,16 +19,17 @@
         <img src="/img/lee.jpg" width="500"><br>
         <br><h3>Você quer fazer parte desse time?</h3><br>
     
-	Faça esse quiz para descobrir qual vingador você será<br><br>
-    <form method="GET" action="/quiz">
-        <label>Seu nome: </label><input type="text" name="nome" required/><br><br>
-        <button type="submit">Estou pronto!</button>
-    </form>
-    <form method="GET" action="/adeus">
-        <button type="submit">Não estou pronto</button>
-    </form>
+        Faça esse quiz para descobrir qual vingador você será<br><br>
+        
+        <form method="GET" action="/quiz">
+            <label>Seu nome: </label><input type="text" name="nome" required/><br><br>
+            <button type="submit">Estou pronto!</button>
+        </form>
     
-    <img src="/img/thanos2.gif">
+        <form method="GET" action="/adeus">
+            <button type="submit">Não estou pronto :(</button>
+        </form>
+        
     </center></body>
 
 </html>

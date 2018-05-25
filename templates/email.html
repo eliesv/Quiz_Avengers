@@ -1,15 +1,26 @@
 <html>
 
-<body bgcolor="#091C4B"><center>
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Marvel' rel='stylesheet'>
+        <style>
+            body {
+                font-family: 'Marvel';font-size: 28px;
+            }
+        </style>
+    </head>
 
-<font color="white"><h3>
-colocar aqui a foto ja com o overlay<br><br>
+    <body bgcolor="#6d3678"><center><br><br><br><br><br>
 
-<form name="send-form" class="send-form" method="POST" action="/resultado">
-    <label>Você quer receber sua foto por email?</label><br><br>
-    <label>Email: </label><input type="email" name="email"/>
-    <input type="submit" value="Enviar" formaction="/email"><br><br><input type="submit" value="Não, prefiro morrer" formaction="/adeus">
-</form>
-</h3></font>
-</body>
+        <font color="white">
+
+            <form name="send-form" class="send-form" method="POST" action="/resultado">
+                <label>Você quer receber sua foto por email?</label><br><br>
+                <label>Email: </label><input type="email" name="email"/>
+                <input type="submit" value="Enviar" formaction="/email"><br><br><input type="submit" value="Não, prefiro morrer" formaction="/adeus">
+            </form>
+
+        </font>
+
+    </body>
+
 </html>
