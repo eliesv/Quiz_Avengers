@@ -13,7 +13,12 @@
             <form name="send-form" class="send-form" method="POST" action="/resultado">
                 <label>Você quer receber sua foto por email?</label><br><br>
                 <label>Email: </label><input type="email" name="email" required>
-                <input type="submit" value="Enviar" formaction="/email" ><br><br><input type="submit" value="Não, prefiro morrer" formaction="/adeus">
+                <button class="a" type="submit">Enviar</button>
+                <br><br>
+            </form>
+            
+            <form name="send-form" class="send-form" method="POST" action="/adeus">
+                <button class="a" type="submit">Hoje não</button>
             </form>
 
         </font>
