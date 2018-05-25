@@ -15,9 +15,11 @@ app = Flask(__name__,static_url_path="")
 
 dicionario = {}
 vencedor = ""
+Nome = ""
 
 @app.route("/")
 def introdução():
+#    Nome = request.form["nome"]
     return render_template("intro.html")
 
 @app.route("/adeus", methods=['POST','GET'])
@@ -57,13 +59,39 @@ def quiz():
 
 @app.route("/redirect", methods=['GET', 'POST'])
 def redirect():
-    return render_template("camera.html")
+    return render_template("camera.html", n = Nome)
 
-
-@app.route("/camera", methods=['GET', 'POST'])
+@app.route('/camera', methods=['GET', 'POST'])
 def camera():
-    #script q abre a camera no flask
-    #    camera("Iron man","rr.jpg") 
+    
+    if request.method == 'POST':
+        print('Uploading...')
+        print(request.method)
+        print(request.mimetype)
+        #print(request.get_json())
+
+        #imgData = request.form.get('pic')
+        #imgData = request.form
+        #imgData = request.get_json(force=True, silent=False)
+        imgData = request.get_data()
+
+        #imgData = request.content
+
+        print(imgData)
+        
+        print('Gravando...')
+        
+        arquivo = open('fotinho.png','wb') #write binary
+        #arquivo.write(base64.decodestring(imgData)) 
+        #arquivo.write(base64.b64decode(imgData)) 
+        arquivo.write(imgData) 
+
+
+        arquivo.close()
+        
+        #script q abre a camera no flask
+        #camera("Iron man","rr.jpg")
+    
     return render_template("resultado.html", v = vencedor)
 
 @app.route("/resultado", methods=['POST','GET'])

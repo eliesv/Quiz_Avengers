@@ -9,14 +9,133 @@
         </style>
     </head>
 
-    <body bgcolor="356EFF"><center><font color="white">
+    <body bgcolor="356EFF" onload="init();"><center><font color="white">
         
-        <h1>Agora só falta tirar uma foto!</h1>
+        <h1>Agora só falta tirar uma foto, {{n}}!</h1>
         
+        <!--
         <form name="send-form" class="send-form" method="GET" action="/camera">
             <input type="image" name="submit" src="/img/spidey.jpg" width="450" border="0" alt="Submit" />
         </form>
+        -->
+        
     
-    </body>
+    <!--
+
+    Source:
+
+    https://stackoverflow.com/questions/33975431/how-can-i-capture-an-image-via-the-users-webcam-using-getusermedia
+    https://stackoverflow.com/questions/34548995/how-to-upload-file-using-pure-vanilla-javascript-and-php
+
+    -->
+
+
+     <!--
+    	<button onclick="startWebcam();">Start WebCam</button>
+    	<button onclick="stopWebcam();">Stop WebCam</button>	
+      	<button onclick="snapshot();uploadImage();">Take Snapshot</button>
+      	--> 
+      	
+      <!--	
+      	<button onclick="uploadImage();">Upload Photo</button>
+      	-->
+
+    <video onclick="snapshot(this);uploadImage();" width=400 height=400 id="video" autoplay></video>
+
+  </body>
+  
+  <script>
+      //--------------------
+      // GET USER MEDIA CODE
+      //--------------------
+          navigator.getUserMedia = ( navigator.getUserMedia ||
+                             navigator.webkitGetUserMedia ||
+                             navigator.mozGetUserMedia ||
+                             navigator.msGetUserMedia);
+
+      var video;
+      var webcamStream;
+
+      function startWebcam() {
+        if (navigator.getUserMedia) {
+           navigator.getUserMedia (
+
+              // constraints
+              {
+                 video: true,
+                 audio: false
+              },
+
+/*
+const mediaSource = new MediaSource();
+const video = document.createElement('video');
+try {
+  video.srcObject = mediaSource;
+} catch (error) {
+  video.src = URL.createObjectURL(mediaSource);
+}
+*/
+
+              // successCallback
+              function(localMediaStream) {
+                  video = document.querySelector('video');
+                  video.src = window.URL.createObjectURL(localMediaStream);
+                 webcamStream = localMediaStream;
+              },
+
+              // errorCallback
+              function(err) {
+                 console.log("The following error occured: " + err);
+              }
+           );
+        } else {
+           console.log("getUserMedia not supported");
+        }
+      } //startWebcam
+
+      function stopWebcam() {
+          webcamStream.getVideoTracks()[0].stop();
+      }
+      //---------------------
+      // TAKE A SNAPSHOT CODE
+      //---------------------
+      var canvas, ctx;
+
+      function init() {
+        // Get the canvas and obtain a context for
+        // drawing in it
+        canvas = document.getElementById("photoCanvas");
+        ctx = canvas.getContext('2d');
+        
+        
+        startWebcam();
+      } //init
+
+      function snapshot() {
+         // Draws current image from the video element into the canvas
+        ctx.drawImage(video, 0,0, canvas.width, canvas.height);
+      } //snapshot
+
+	  function uploadImage() { //Vanilla AJAX JavaScript...
+
+      // Carrega a imagem em uma variável
+    	//var canvasBox = document.getElementById('photoCanvas').getContext("2d");
+    	//var photoData = canvasBox.getImageData(0, 0, 400, 400);
+		  var photoData = document.getElementById('photoCanvas').toDataURL("image/png");
+
+      //Evia dados da imagem para o servidor via POST
+    	var xhr = new XMLHttpRequest();
+
+    	xhr.open("POST","/uploadphoto", true);
+
+    	xhr.setRequestHeader("Content-type","image/png");
+
+		console.log(photoData); //debug
+
+		xhr.send(photoData);
+
+	} //uploadImage
+
+  </script>
     
 </html>

@@ -86,15 +86,15 @@ def multiplaescolha(pergunta):
         if x == 0:
             lista = ["Vision","Ant Man"]  
         elif x == 1:
-            lista = ["Hulk","Captain America"]       
+            lista = ["Hulk","Black Panther"]       
         elif x == 2:
-            lista = ["Thor","Doctor Strange"]
+            lista = ["Peter Quill","Doctor Strange"]
         elif x == 3:
-            lista = ["Iron Man","Black Panther"]
+            lista = ["Iron Man","Spider Man"]
         elif x == 4:
-            lista = ["Peter Quill","Rocket"]
+            lista = ["Captain America","Rocket"]
         elif x == 5:
-            lista = ["Spider Man","Scarlet Witch"]
+            lista = ["Thor", "Scarlet Witch"]
             
     elif pergunta == "camisa":
         if x == 0:
@@ -160,7 +160,7 @@ def multiplaescolha(pergunta):
         elif x == 2:
             lista = ["Thor","Iron Man"]
         elif x == 3:
-            lista = ["Visiom","Peter Quill"]
+            lista = ["Vision","Peter Quill"]
         elif x == 4:
             lista = ["Black Panther","Doctor Strange"]
         elif x == 5:
