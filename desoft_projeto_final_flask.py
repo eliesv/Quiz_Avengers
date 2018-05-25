@@ -38,7 +38,7 @@ def quiz():
         for i in lista:
             dicionario[i] = 0
             
-        #Nome = request.method["nome"]
+        Nome = request.form["nome"]
 
         idade = anos.idade()
         for i in idade:
