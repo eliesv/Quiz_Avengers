@@ -14,171 +14,171 @@ def multiplaescolha(pergunta):
         
     if pergunta == "cidade":
         if x == 0:
-            lista = ["Captain America"]  
+            lista = ["Captain America","Black Panther"]  
         elif x == 1:
-            lista = ["Hulk"]       
+            lista = ["Hulk","Iron Man"]       
         elif x == 2:
-            lista = ["Thor"]
+            lista = ["Vision","Scarlet Witch"]
         elif x == 3:
-            lista = ["Iron Man"]
+            lista = ["Thor","Ant Man"]
         elif x == 4:
-            lista = ["Black Panther"]
+            lista = ["Doctor Strange","Spider Man"]
         elif x == 5:
-            lista = ["Spider Man"]
+            lista = ["Peter Quill","Rocket"]
             
     elif pergunta == "animal":
         if x == 0:
-            lista = ["Captain America"]  
+            lista = ["Black Panther", "Iron Man"]  
         elif x == 1:
-            lista = ["Hulk"]       
+            lista = ["Rocket", "Vision"]       
         elif x == 2:
-            lista = ["Thor"]
+            lista = ["Ant Man", "Peter Quill"]
         elif x == 3:
-            lista = ["Iron Man"]
+            lista = ["Captain America", "Hulk"]
         elif x == 4:
-            lista = ["Black Panther"]
+            lista = ["Thor","Scarlet Witch"]
         elif x == 5:
-            lista = ["Spider Man"]
+            lista = ["Spider Man","Doctor Strange"]
 
     elif pergunta == "planeta":
         if x == 0:
-            lista = ["Captain America"]  
+            lista = ["Doctor Strange","Iron Man"]  
         elif x == 1:
-            lista = ["Hulk"]       
+            lista = ["Thor","Hulk"]       
         elif x == 2:
-            lista = ["Thor"]
+            lista = ["Rocket","Scarlet Witch"]
         elif x == 3:
-            lista = ["Iron Man"]
+            lista = ["Ant Man","Spider Man"]
         elif x == 4:
-            lista = ["Black Panther"]
+            lista = ["Peter Quill","Vision"]
         elif x == 5:
-            lista = ["Spider Man"]
+            lista = ["Black Panther","Captain America"]
 
     elif pergunta == "esporte":
         if x == 0:
-            lista = ["Captain America"]  
+            lista = ["Rocket","Scarlet Witch"]  
         elif x == 1:
-            lista = ["Hulk"]       
+            lista = ["Doctor Strange","Vision"]       
         elif x == 2:
-            lista = ["Thor"]
+            lista = ["Thor","Spider Man"]
         elif x == 3:
-            lista = ["Iron Man"]
+            lista = ["Iron Man","Hulk"]
         elif x == 4:
-            lista = ["Black Panther"]
+            lista = ["Black Panther","Captain America"]
         elif x == 5:
-            lista = ["Spider Man"]
+            lista = ["Ant Man","Peter Quill"]
 
     elif pergunta == "olho":
         if x == 0:
-            lista = ["Captain America"]  
+            lista = ["Captain America","Thor"]  
         elif x == 1:
-            lista = ["Hulk"]       
+            lista = ["Scarlet Witch","Peter Quill"]       
         elif x == 2:
-            lista = ["Thor"]
+            lista = ["Doctor Strange","Iron Man"]
         elif x == 3:
-            lista = ["Iron Man"]
+            lista = ["Black Panther","Spider Man"]
         elif x == 4:
-            lista = ["Black Panther"]
+            lista = ["Ant Man","Rocket"]
         elif x == 5:
-            lista = ["Spider Man"]
+            lista = ["Vision","Hulk"]
 
     elif pergunta == "musica":
         if x == 0:
-            lista = ["Captain America"]  
+            lista = ["Vision","Ant Man"]  
         elif x == 1:
-            lista = ["Hulk"]       
+            lista = ["Hulk","Captain America"]       
         elif x == 2:
-            lista = ["Thor"]
+            lista = ["Thor","Doctor Strange"]
         elif x == 3:
-            lista = ["Iron Man"]
+            lista = ["Iron Man","Black Panther"]
         elif x == 4:
-            lista = ["Black Panther"]
+            lista = ["Peter Quill","Rocket"]
         elif x == 5:
-            lista = ["Spider Man"]
+            lista = ["Spider Man","Scarlet Witch"]
             
     elif pergunta == "camisa":
         if x == 0:
-            lista = ["Captain America"]  
+            lista = ["Rocket","Scarlet Witch"]  
         elif x == 1:
-            lista = ["Hulk"]       
+            lista = ["Peter Quill", "Black Panther"]       
         elif x == 2:
-            lista = ["Thor"]
+            lista = ["Iron Man","Spider Man"]
         elif x == 3:
-            lista = ["Iron Man"]
+            lista = ["Captain America","Thor"]
         elif x == 4:
-            lista = ["Black Panther"]
+            lista = ["Hulk","Doctor Strange"]
         elif x == 5:
-            lista = ["Spider Man"]
+            lista = ["Vision","Ant Man"]
             
     elif pergunta == "filme":
         if x == 0:
-            lista = ["Captain America"]  
+            lista = ["Vision","Thor"]  
         elif x == 1:
-            lista = ["Hulk"]       
+            lista = ["Hulk","Ant Man"]       
         elif x == 2:
-            lista = ["Thor"]
+            lista = ["Peter Quill","Doctor Strange"]
         elif x == 3:
-            lista = ["Iron Man"]
+            lista = ["Rocket","Black Panther"]
         elif x == 4:
-            lista = ["Black Panther"]
+            lista = ["Spider Man","Captain America"]
         elif x == 5:
-            lista = ["Spider Man"]
+            lista = ["Iron Man","Scarlet Witch"]
             
     elif pergunta == "pedra":
         if x == 0:
-            lista = ["Captain America"]  
+            lista = ["Hulk","Black Panther"]  
         elif x == 1:
-            lista = ["Hulk"]       
+            lista = ["Doctor Strange","Captain America"]       
         elif x == 2:
-            lista = ["Thor"]
+            lista = ["Scarlet Witch","Spider Man"]
         elif x == 3:
-            lista = ["Iron Man"]
+            lista = ["Vision","Rocket"]
         elif x == 4:
-            lista = ["Black Panther"]
+            lista = ["Iron Man","Peter Quill"]
         elif x == 5:
-            lista = ["Spider Man"]
+            lista = ["Thor","Ant Man"]
             
     elif pergunta == "cor":
         if x == 0:
-            lista = ["Captain America"]  
+            lista = ["Spider Man","Peter Quill"]  
         elif x == 1:
-            lista = ["Hulk"]       
+            lista = ["Iron Man", "Captain America"]       
         elif x == 2:
-            lista = ["Thor"]
+            lista = ["Thor","Hulk"]
         elif x == 3:
-            lista = ["Iron Man"]
+            lista = ["Black Panther","Doctor Strange"]
         elif x == 4:
-            lista = ["Black Panther"]
+            lista = ["Vision","Ant Man"]
         elif x == 5:
-            lista = ["Spider Man"]
+            lista = ["Rocket","Scarlet Witch"]
             
     elif pergunta == "comida":
         if x == 0:
-            lista = ["Captain America"]  
+            lista = ["Captain America","Scarlet Witch"]  
         elif x == 1:
-            lista = ["Hulk"]       
+            lista = ["Hulk","Vision"]       
         elif x == 2:
-            lista = ["Thor"]
+            lista = ["Thor","Iron Man"]
         elif x == 3:
-            lista = ["Iron Man"]
+            lista = ["Visiom","Peter Quill"]
         elif x == 4:
-            lista = ["Black Panther"]
+            lista = ["Black Panther","Doctor Strange"]
         elif x == 5:
-            lista = ["Spider Man"]
+            lista = ["Spider Man","Rocket"]
             
     elif pergunta == "numero":
         if x == 0:
-            lista = ["Captain America"]  
+            lista = ["Doctor Strange","Rocket"]  
         elif x == 1:
-            lista = ["Hulk"]       
+            lista = ["Vision","Black Panther"]       
         elif x == 2:
-            lista = ["Thor"]
+            lista = ["Peter Quill","Scarlet Witch"]
         elif x == 3:
-            lista = ["Iron Man"]
+            lista = ["Spider Man","Ant Man"]
         elif x == 4:
-            lista = ["Black Panther"]
+            lista = ["Captain America","Thor"]
         elif x == 5:
-            lista = ["Spider Man"]
+            lista = ["Iron Man","Hulk"]
 
     return lista
 
