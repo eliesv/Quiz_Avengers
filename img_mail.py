@@ -20,7 +20,7 @@ def send(emailto):
 
     foto=open(r"vingador.png", "rb")
     msg.attach(MIMEImage(foto.read()))
-    msg.attach(MIMEText("thanks for playing"))
+    msg.attach(MIMEText("Thanks for playing"))
  
 
     server = smtplib.SMTP('smtp.gmail.com: 587')
