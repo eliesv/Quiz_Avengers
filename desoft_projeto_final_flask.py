@@ -36,7 +36,7 @@ def quiz():
     
     if request.method == "POST":
         
-        lista = ["Captain America","Iron Man","Hulk","Thor","Spider Man", "Doctor Strange", "Black Panther", "Peter Quill", "Vision", "Scarlet Witch", "Falcon", "Rocket"]
+        lista = ["Captain America","Iron Man","Hulk","Thor","Spider Man", "Doctor Strange", "Black Panther", "Peter Quill", "Vision", "Scarlet Witch", "Ant Man", "Rocket"]
         for i in lista:
             dicionario[i] = 0
 
