@@ -5,8 +5,8 @@
 import cv2
      
 def overlay(vingador):
-    face_cascade = cv2.CascadeClassifier('C:/Users/Freddy Dratwa/Downloads/opencv/sources/data/haarcascades/haarcascade_frontalface_default.xml')
-    foreground_image = cv2.imread('C:/Users/Freddy Dratwa/Documents/GitHub/Quiz_Avengers/photos/{}.png'.format(vingador), -1)
+    face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+    foreground_image = cv2.imread('photos/{}.png'.format(vingador), -1)
             
     foreground_mask = foreground_image[:, :, 3] 
     background_mask = cv2.bitwise_not(foreground_mask)  
@@ -22,7 +22,7 @@ def overlay(vingador):
     padding_left = (background_size - foreground_size) / 2
     padding_right = (background_size - foreground_size) / 2
 
-    cv_image = cv2.imread("C:/Users/Freddy Dratwa/Documents/GitHub/Quiz_Avengers/rr.jpg") 
+    cv_image = cv2.imread("rr.png") 
        
     faces = face_cascade.detectMultiScale( 
                 cv_image,
@@ -47,7 +47,7 @@ def overlay(vingador):
         roi_fg = cv2.bitwise_and(foreground_image, foreground_image, mask=foreground_mask)
         dst = cv2.add(roi_bg, roi_fg) 
 
-        cv2.imwrite("C:/Users/Freddy Dratwa/Documents/GitHub/Quiz_Avengers/vingador.png", dst) 
+        cv2.imwrite("vingador.png", dst) 
             
         #print("Pronto!!")
         cv2.waitKey()

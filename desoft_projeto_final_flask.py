@@ -10,6 +10,7 @@ import idade as anos
 import img_mail as mail
 import Photos as p
 import cv2
+import base64
 
 app = Flask(__name__,static_url_path="")
 
@@ -83,16 +84,18 @@ def camera():
         
         print('Gravando...')
         
-        arquivo = open('fotinho.png','wb') #write binary
-        #arquivo.write(base64.decodestring(imgData)) 
-        #arquivo.write(base64.b64decode(imgData)) 
-        arquivo.write(imgData) 
-
-
-        arquivo.close()
+        with open("fotinho.gif", "wb") as foto:
+            foto.write(base64.b64decode(imgData))
+        
+#        arquivo = open('fotinho.png','wb') #write binary
+#        #arquivo.write(base64.decodestring(imgData)) 
+#        #arquivo.write(base64.b64decode(imgData)) 
+#        arquivo.write(imgData) 
+#
+#
+#        arquivo.close()
         
         #script q abre a camera no flask
-        #camera("Iron man","rr.jpg")
     
     return redirect("/resultado")
 
@@ -100,7 +103,7 @@ def camera():
 def resultado():
     
     if request.method == "GET":
-        p.overlay("Iron man")
+        #p.overlay("Iron man")
         return render_template("resultado.html", v = vencedor)
 
     if request.method == "POST":

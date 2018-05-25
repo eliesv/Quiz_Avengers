@@ -10,15 +10,15 @@
 
         <font color="white">
 
-            <form name="send-form" class="send-form" method="POST" action="/resultado">
+            <form name="send-form" class="send-form" method="POST">
                 <label>Você quer receber sua foto por email?</label><br><br>
                 <label>Email: </label><input type="email" name="email" required>
-                <button class="a" type="submit">Enviar</button>
+                <button class="a" type="submit" action="/resultado">Enviar</button>
                 <br><br>
             </form>
             
-            <form name="send-form" class="send-form" method="POST" action="/adeus">
-                <button class="a" type="submit">Hoje não</button>
+            <form name="send-form" class="send-form" method="POST">
+                <button class="a" type="submit" action="/adeus">Hoje não</button>
             </form>
 
         </font>
