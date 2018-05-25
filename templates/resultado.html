@@ -14,7 +14,7 @@
         <!--<img src="/Photos/vingador.png"><br><br>-->
         
         <h1>Você é o...</h1>
-        
+        {{v}}
         {% if v == "Captain America" %}
             <h1>CAPITÃO AMÉRICA</h1>
             <br><br>HISTÓRIA: nasceu em 4 de julho de 1920. Ao completar pouco mais de 20 anos, se alistou para o exército americano para lutar na segunda guerra. Por ser franzino, foi escolhido para ser teste em uma operação para formar super-homens. Por tanto, teve esteroides injetados em seu corpo, se tornou super forte e passou a liderar um esquadrão secreto americano na guerra. Se sacrificou no fim da guerra, congeclou e acordou 60 anos depois.
@@ -65,15 +65,15 @@
             <br><br>HISTÓRIA: Wanda Maximoff, também conhecida como feiticieira escarlate foi sequestrada, quando criança, junta de seu irmão Pietro. Ainda nessa idade, os sequestradores, chamados de “Alto Revolucionário” começou a mexer em seus cromossomos e os irmãos ganharam poderes sobre-naturais, sendo que seu irmão que passou a ser chamado de Mercúrio tinha super velocidade e ela, uma feiticeira. Apesar de no início do filme bataharem contra os Vingadores, os irmãos acabam ed juntando a eles na luta contra Ultron.
             <br><br>PODERES: manipulação da realidade, Controle mental, voo, telepatia…<br><br>
         
-        {% elif v == "Falcon" %}
-            <h1>FALCÃO</h1>
-            <br><br>HISTÓRIA: Quando ainda pequeno, Sam Wilson viu ambos seus pais morrerem assassinados. Sozinho, entro na vida do crime, onde era conhecido com “Snap Wilson”. Depois de um tempo, mudou de lado e passou a ajudar Capitão América em suas aventuras. Para tal, ganhou um objeto que se assemelha a uma asa, dando-o a habilidade de voar. 
-            <br><br>PODERES: voo, hábil atirador, mestre em luta<br><br>
+        {% elif v == "Ant Man" %}
+            <h1>HOMEM FORMIGA</h1>
+            <br><br>HISTÓRIA: Scott Lang, antes de se tornar o Homem-Formiga, era um especialista em eletrônica que não conseguia sustentar sua família. Então passou a usar suas habilidades para roubar. E certa vez, em um roubo, acabou sendo preso. Na prisão, cumpriu pena e foi liberado antes. Entretanto, em seu tempo na prisão, sua esposa acabou se separando dele e ficando com a guarda da filha. Desesperado para conseguir dinheiro para tratar a doença da filha, Scott voltou para o crime. Então decidiu invadir a casa do cientista Hank Pym e roubou seu traje. Não sabia Scott, porem que Pym havia planejado tudo isso e assim, o convida para ser o Homem-Formiga.  
+            <br><br>PODERES: Habilidade de crescer e encolher, capacidade de se comunicar com formigas, especulá-se que tenha a habilidade de voltar/avançar no tempo através da dimensão quântica.<br><br>
         
         {% elif v == "Rocket" %}
             <h1>ROCKET/h1>
             <br><br>HISTÓRIA: Rocket nasceu em um planeta chamado Halfworld, uma colônia abandonada para doentes mentais, onde animais são manipualdos geneticamente para receberem inteligência humana e andarem em duas patas. Lá, Rocket era chefe de segurança. Depois de sair deste planeta, tem diversas história, inclusive uma em que encontra Hulk e se une a ele para defender a bíblia de Gideão. Depois, se une aos Guardiões da Gaaxia, à pedido de Peter Quill.
-            <br><br>PODERES: inteligência humana, excelente piloto, mestre atirador e tático <br><br>
+            <br><br>PODERES: Inteligência humana, excelente piloto, mestre atirador e tático  <br><br>
             
         {% else %}
         
@@ -86,7 +86,7 @@
         <form name="send-form" class="send-form" method="GET">
             <input type="submit" value="Continuar" formaction="/resultado">
             <br><br>
-            <input type="submit" value="Tirar outra foto" formaction="/redirect">
+            <input type="submit" value="Tirar outra foto" formaction="/red">
         </form>
         
     </body>
