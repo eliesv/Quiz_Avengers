@@ -3,16 +3,17 @@
     <head>
         <link rel="stylesheet" type="text/css" href="/style/style.css">
         <link href='https://fonts.googleapis.com/css?family=Marvel' rel='stylesheet'>
+        <style>
+         html {
+             zoom: 45%;
+         }
+         </style>
     </head>
 
     <body bgcolor="356EFF" onload="init();"><center><font color="white">
-        
-        <h1>Agora só falta tirar uma foto, {{n}}!</h1>
-        
-        
 
-        
-    
+        <h1>Agora só falta tirar uma foto, {{n}}!</h1>
+
     <!--
 
     Source:
@@ -25,24 +26,24 @@
 
      <!--
     	<button onclick="startWebcam();">Start WebCam</button>
-    	<button onclick="stopWebcam();">Stop WebCam</button>	
+    	<button onclick="stopWebcam();">Stop WebCam</button>
       	<button onclick="snapshot();uploadImage();">Take Snapshot</button>
-      	--> 
-      	
-      <!--	
+      	-->
+
+      <!--
       	<button onclick="uploadImage();">Upload Photo</button>
       	-->
 
-    <video width=400 height=400 id="video" autoplay></video>
-    
-    <canvas hidden  id="photoCanvas" width="400" height="300"></canvas>
-    
+    <video width=1000 height=1000 id="video" autoplay></video>
+
+    <canvas hidden  id="photoCanvas" width="1000" height="1000"></canvas>
+
         <form name="send-form" class="send-form" method="POST" action="/camera">
-            <input onclick="snapshot(this);uploadImage();" type="image" name="submit" src="/img/spidey.jpg" width="45" border="0" alt="Submit" />
+            <input onclick="snapshot(this);uploadImage();" type="image" name="submit" src="/img/spidey.jpg" width="180" border="0" alt="Submit" />
         </form>
 
   </body>
-  
+
   <script>
       //--------------------
       // GET USER MEDIA CODE
@@ -95,8 +96,8 @@
         // drawing in it
         canvas = document.getElementById("photoCanvas");
         ctx = canvas.getContext('2d');
-        
-        
+
+
         startWebcam();
       } //init
 
@@ -126,5 +127,5 @@
 	} //uploadImage
 
   </script>
-    
+
 </html>
