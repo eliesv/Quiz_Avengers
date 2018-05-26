@@ -38,8 +38,9 @@ def quiz():
         lista = ["Captain America","Iron Man","Hulk","Thor","Spider Man", "Doctor Strange", "Black Panther", "Peter Quill", "Vision", "Scarlet Witch", "Ant Man", "Rocket"]
         for i in lista:
             dicionario[i] = 0
-            
-        Nome = request.form["nome"]
+        
+        with open('nome.txt','w') as nn:
+            nn.write(request.form["nome"])
 
         idade = anos.idade()
         for i in idade:
@@ -54,17 +55,18 @@ def quiz():
         print(dicionario)
         print(vencedor)
         print(request.form)
+        
+        with open('vencedor.txt','w') as vv:
+            vv.write(vencedor)
 
-    return redirect("/red")
-
-@app.route("/red", methods=['GET'])
-def redi():
     return redirect("/camera")
 
 @app.route('/camera', methods=['GET', 'POST'])
 def camera():
     
     if request.method == "GET":
+        with open('nome.txt','r') as nn:
+            Nome = nn.read()
         return render_template("camera.html", n = Nome)
     
     if request.method == 'POST':
@@ -104,6 +106,8 @@ def resultado():
     
     if request.method == "GET":
         #p.overlay("Iron man")
+        with open('vencedor.txt','r') as vv:
+            vencedor = vv.read()
         return render_template("resultado.html", v = vencedor)
 
     if request.method == "POST":
