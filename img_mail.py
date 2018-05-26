@@ -15,12 +15,12 @@ def send(emailto):
     msg = MIMEMultipart()
     msg['From'] = 'jogoavengers@gmail.com'
     #msg['To'] =  email
-    msg['Subject'] = "teste"
+    msg['Subject'] = "FUNCIONOU HAVA NAGUILA HAVA"
  
 
     foto=open(r"vingador.png", "rb")
     msg.attach(MIMEImage(foto.read()))
-    msg.attach(MIMEText("Thanks for playing"))
+    msg.attach(MIMEText("olha q bonito olha q bacana"))
  
 
     server = smtplib.SMTP('smtp.gmail.com: 587')

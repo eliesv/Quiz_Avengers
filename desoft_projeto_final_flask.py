@@ -10,7 +10,8 @@ import idade as anos
 import img_mail as mail
 import Photos as p
 import cv2
-import base64
+from base64 import b64decode
+import codecs
 
 app = Flask(__name__,static_url_path="")
 
@@ -70,35 +71,17 @@ def camera():
         return render_template("camera.html", n = Nome)
     
     if request.method == 'POST':
-        print('Uploading...')
-        print(request.method)
-        print(request.mimetype)
-        #print(request.get_json())
+        imgData = str(request.get_data()) #vem como bytes --> .decode() transforma em string e .encode(), de string de volta em bytes
+        print('Imagem enviada...')
+        
+        imgData = imgData.partition(",")[2] #corta o texto q vem antes
+        pad = len(imgData)%4 #checa se len(imgData) é divisiver por 4 (pro base64 funcionar tem q ser aparentemente)
+        imgData += "="*pad # adiciona = até ficar divisivel por 4 pq por algum motivo isso funcionay        
+        imgData = codecs.decode(imgData.encode().strip(),'base64') #decodifica base64
 
-        #imgData = request.form.get('pic')
-        #imgData = request.form
-        #imgData = request.get_json(force=True, silent=False)
-        imgData = request.get_data()
+        with open("vingador.png", 'wb') as foto: #write bytes
+            foto.write(imgData)
 
-        #imgData = request.content
-
-        #print(imgData)
-        
-        print('Gravando...')
-        
-        with open("fotinho.gif", "wb") as foto:
-            foto.write(base64.b64decode(imgData))
-        
-#        arquivo = open('fotinho.png','wb') #write binary
-#        #arquivo.write(base64.decodestring(imgData)) 
-#        #arquivo.write(base64.b64decode(imgData)) 
-#        arquivo.write(imgData) 
-#
-#
-#        arquivo.close()
-        
-        #script q abre a camera no flask
-    
     return redirect("/resultado")
 
 @app.route("/resultado", methods=['POST','GET'])
