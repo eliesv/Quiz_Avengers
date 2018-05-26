@@ -3,11 +3,11 @@
     <head>
         <link rel="stylesheet" type="text/css" href="/style/style.css">
         <link href='https://fonts.googleapis.com/css?family=Marvel' rel='stylesheet'>
-        <style>
+      <!--  <style>
          html {
              zoom: 45%;
          }
-         </style>
+       </style> -->
     </head>
 
     <body bgcolor="356EFF" onload="init();"><center><font color="white">
@@ -34,12 +34,12 @@
       	<button onclick="uploadImage();">Upload Photo</button>
       	-->
 
-    <video width=1000 height=1000 id="video" autoplay></video>
+    <video width=400 height=380 id="video" autoplay></video>
 
-    <canvas hidden  id="photoCanvas" width="1000" height="1000"></canvas>
+    <canvas hidden  id="photoCanvas" width="400" height="350"></canvas>
 
         <form name="send-form" class="send-form" method="POST" action="/camera">
-            <input onclick="snapshot(this);uploadImage();" type="image" name="submit" src="/img/spidey.jpg" width="180" border="0" alt="Submit" />
+            <input onclick="snapshot(this);uploadImage();" type="image" name="submit" src="/img/spidey.jpg" width="80" border="0" alt="Submit" />
         </form>
 
   </body>
