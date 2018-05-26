@@ -16,7 +16,7 @@ import codecs
 app = Flask(__name__,static_url_path="")
 
 dicionario = {}
-vencedor = "aaa"
+vencedor = ""
 Nome = ""
 
 @app.route("/")
