@@ -11,8 +11,6 @@ import img_mail as mail
 import Photos as p
 import cv2
 import json
-import os
-import shutil
 
 app = Flask(__name__,static_url_path="")
 
