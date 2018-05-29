@@ -11,6 +11,8 @@ import img_mail as mail
 import Photos as p
 import cv2
 import json
+import os
+import shutil
 
 app = Flask(__name__,static_url_path="")
 
@@ -69,6 +71,7 @@ def camera():
         return render_template("camera.html", n = Nome)
 
     if request.method == 'POST':
+        # path = r'C:/Users/{}/'.format(User)
         return redirect("/resultado")
 
 @app.route("/resultado", methods=['POST','GET'])
