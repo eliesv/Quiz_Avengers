@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 gf
+=======
+freddy
+>>>>>>> a6f0e82480e5f6da5133bf0b7030eddcb9a42b00
