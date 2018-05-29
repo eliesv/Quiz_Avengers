@@ -15,18 +15,11 @@ html{
     background-color: #fff;
     font:normal 16px/1.5 sans-serif;
     color: #333;
+    zoom: 90%;
 }
-
-h3{
-    font: normal 32px/1.5 'Open Sans', sans-serif;
-    color: #2c3e50;
-    margin: 50px 0;
-    text-align: center;
-}
-
 
 .container{
-    max-width: 1000px;
+    max-width: 550px;
     margin: 50px auto;
     padding: 20px;
     background-color: #efefef;
@@ -181,35 +174,40 @@ h3{
     }
 }
 </style>
-</head>
 
-<body>
+<body><center>
 
-<h3>Demo: Take a Selfie With JavaScript</h3>
+    <h1>Agora sÃ³ falta tirar uma foto, {{n}}!</h1>
 
 <div class="container">
 
   <div class="app">
 
-    <a href="#" id="start-camera" class="visible">Touch here to start the app.</a>
+    <a href="#" id="start-camera" class="visible">Click here to start the app.</a>
     <video id="camera-stream"></video>
     <img id="snap">
 
     <p id="error-message"></p>
 
-    <div class="controls">
-      <a href="#" id="delete-photo" title="Delete Photo" class="disabled"><i class="material-icons">delete</i></a>
-      <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
-      <a href="#" id="download-photo" download="selfie.png" title="Save Photo" class="disabled"><i class="material-icons">file_download</i></a>
-    </div>
+
+      <div class="controls">
+        <a href="#" id="delete-photo" title="Delete Photo" class="disabled"><i class="material-icons">replay</i></a>
+        <a href="#" id="take-photo" title="Take Photo"><i class="material-icons">camera_alt</i></a>
+        <a href="#" id="download-photo" download="selfie.png" title="Save Photo" class="disabled"><i class="material-icons">done</i></a>
+      </div>
+
 
     <!-- Hidden canvas element. Used for taking snapshot of video. -->
     <canvas></canvas>
 
+
+
   </div>
 
 </div>
-
+<form name="send-form" class="send-form" method="POST" action="/camera">
+<input type="image" name="submit" src="/img/spidey.jpg" width="80" border="0" alt="Submit" />
+</form>
 </body>
 
 <script>
@@ -398,7 +396,7 @@ function hideUI(){
 
     <body bgcolor="356EFF" onload="init();"><center><font color="white">
 
-        <h1>Agora só falta tirar uma foto, {{n}}!</h1>
+        <h1>Agora sï¿½ falta tirar uma foto, {{n}}!</h1>
 
     <!--
 
@@ -425,93 +423,9 @@ function hideUI(){
     <canvas hidden  id="photoCanvas" width="400" height="350"></canvas>
 
         <form name="send-form" class="send-form" method="POST" action="/camera">
-            <input onclick="snapshot(this);uploadImage();" type="image" name="submit" src="/img/spidey.jpg" width="80" border="0" alt="Submit" />
         </form>
 
   </body>
 
-  <script>
-      //--------------------
-      // GET USER MEDIA CODE
-      //--------------------
-          navigator.getUserMedia = ( navigator.getUserMedia ||
-                             navigator.webkitGetUserMedia ||
-                             navigator.mozGetUserMedia ||
-                             navigator.msGetUserMedia);
-
-      var video;
-      var webcamStream;
-
-      function startWebcam() {
-        if (navigator.getUserMedia) {
-           navigator.getUserMedia (
-
-              // constraints
-              {
-                 video: true,
-                 audio: false
-              },
-
-              // successCallback
-              function(localMediaStream) {
-                  video = document.querySelector('video');
-                  video.src = window.URL.createObjectURL(localMediaStream);
-                 webcamStream = localMediaStream;
-              },
-
-              // errorCallback
-              function(err) {
-                 console.log("The following error occured: " + err);
-              }
-           );
-        } else {
-           console.log("getUserMedia not supported");
-        }
-      } //startWebcam
-
-      function stopWebcam() {
-          webcamStream.getVideoTracks()[0].stop();
-      }
-      //---------------------
-      // TAKE A SNAPSHOT CODE
-      //---------------------
-      var canvas, ctx;
-
-      function init() {
-        // Get the canvas and obtain a context for
-        // drawing in it
-        canvas = document.getElementById("photoCanvas");
-        ctx = canvas.getContext('2d');
-
-
-        startWebcam();
-      } //init
-
-      function snapshot() {
-         // Draws current image from the video element into the canvas
-        ctx.drawImage(video, 0,0, canvas.width, canvas.height);
-      } //snapshot
-
-	  function uploadImage() { //Vanilla AJAX JavaScript...
-
-      // Carrega a imagem em uma variável
-    	//var canvasBox = document.getElementById('photoCanvas').getContext("2d");
-    	//var photoData = canvasBox.getImageData(0, 0, 400, 400);
-		  var photoData = document.getElementById('photoCanvas').toDataURL("image/png");
-
-      //Evia dados da imagem para o servidor via POST
-    	var xhr = new XMLHttpRequest();
-
-    	xhr.open("POST","/camera", true);
-
-    	xhr.setRequestHeader("Content-type","image/png");
-
-		//console.log(photoData); //debug
-      console.log('Foto enviada...')//debug
-		xhr.send(photoData);
-
-	} //uploadImage
-
-  </script>
 
 </html> -->
