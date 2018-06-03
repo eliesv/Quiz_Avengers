@@ -8,14 +8,15 @@
 
     <body bgcolor="4C9FFF">
         <center>
-        <!--<img src="/Photos/vingador.png"><br><br>-->
 
-        <h1>Você é o...</h1>
+        <h1>Você é...</h1>
+        <img src="img/HAHAHAHA.jpg" width="500"><br><br>
+
         {% if v == "Captain America" %}
             <h1>CAPITÃO AMÉRICA</h1>
-            HISTÓRIA: nasceu em 4 de julho de 1920. Ao completar pouco mais de 20 anos, se alistou para o exército americano para lutar na segunda guerra. Por ser franzino, foi escolhido para ser teste em uma operação para formar super-homens. Por tanto, teve esteroides injetados em seu corpo, se tornou super forte e passou a liderar um esquadrão secreto americano na guerra. Se sacrificou no fim da guerra, congeclou e acordou 60 anos depois.
+            HISTÓRIA: nasceu em 4 de julho de 1920. Ao completar pouco mais de 20 anos, se alistou para o exército americano para lutar na segunda guerra. Por ser franzino, foi escolhido para ser teste em uma operação para formar super-homens. Por tanto, teve esteroides injetados em seu corpo, se tornou super forte e passou a liderar um esquadrão secreto americano na guerra. Se sacrificou no fim da guerra, foi congelado e acordou 60 anos depois.
             <br><br>PODERES: super-força, liderança nata, escudo super animal.<br><br>
-            
+
         {% elif v == "Iron Man" %}
             <h1>HOMEM DE FERRO</h1>
             HISTÓRIA:  Herdou de seu pai a empresa Stark Enterprises após sua trágica morte. Trabalhou por anos em desenvolvimento de armas até que foi sequestrado, no meio da guerra do Afeganistão para produzir mísseis para os terroristas. Ao invés de fazer isso, construiu uma armadura para si próprio, Conseguiu fugir das mãos dos árabes e ao voltar para casa, se dedicou à construir armaduras para si próprio. Desde então, é o principal líder dos vingadores.
@@ -81,6 +82,10 @@
 
         <form name="send-form" class="send-form" method="POST" action="/resultado">
             <button class="a" type="submit">Continuar</button>
+        </form>
+
+        <form name="send-form" class="send-form" method="GET" action="/camera">
+            <button class="a" type="submit">Tirar a foto novamente</button>
         </form>
 
 

@@ -15,13 +15,13 @@ def send(emailto):
     msg = MIMEMultipart()
     msg['From'] = 'jogoavengers@gmail.com'
     #msg['To'] =  email
-    msg['Subject'] = "FUNCIONOU HAVA NAGUILA HAVA"
- 
+    msg['Subject'] = "kkk"
 
-    foto=open(r"vingador.png", "rb")
+
+    foto=open("rr.jpg", "rb")
     msg.attach(MIMEImage(foto.read()))
     msg.attach(MIMEText("olha q bonito olha q bacana"))
- 
+
 
     server = smtplib.SMTP('smtp.gmail.com: 587')
 
@@ -38,4 +38,3 @@ def send(emailto):
 #    print ("sent to {}".format((msg['To'])))
 #except:
 #    print ('error sending mail')
-

@@ -37,7 +37,6 @@ def quiz():
         for i in lista:
             dicionario[i] = 0
 
-
         idade = anos.idade()
         for i in idade:
             dicionario[i] += 1
@@ -70,7 +69,11 @@ def camera():
 
     if request.method == 'POST':
         # path = r'C:/Users/{}/'.format(User)
-        return redirect("/resultado")
+        return redirect("/loading")
+
+@app.route("/loading", methods=['GET'])
+def loading():
+    return render_template('loading.html')
 
 @app.route("/resultado", methods=['POST','GET'])
 def resultado():

@@ -1,0 +1,16 @@
+html {
+    font-family: 'Marvel';
+    font-size: 28px;
+        }
+.a {
+    background-color: #1a43d4;
+    border: none;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    cursor: pointer;
+}
+.a:hover {
+    background-color: #173391;
+    //box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24);
+}
