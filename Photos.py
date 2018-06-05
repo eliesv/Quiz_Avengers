@@ -3,54 +3,64 @@
 @authors: elies, freddyd, michelh
 """
 import cv2
-     
-def overlay(vingador):
-    face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-    foreground_image = cv2.imread('photos/{}.png'.format(vingador), -1)
-            
-    foreground_mask = foreground_image[:, :, 3] 
-    background_mask = cv2.bitwise_not(foreground_mask)  
-    foreground_image = foreground_image[:, :, 0:3] 
-    
-    foreground_size = 570
-    foreground_ratio = float(foreground_size)  
-    
-    background_size = 2000 
-    
-    padding_top = ((background_size - foreground_size) / 3) * 2
-    padding_bottom = background_size - padding_top
-    padding_left = (background_size - foreground_size) / 2
-    padding_right = (background_size - foreground_size) / 2
+import os
+import json
+def overlay():
+    with open('variaveis.json','r') as variaveis:
+        dicjson = json.loads(variaveis.read())
+        vingador = dicjson["vencedor"]
 
-    cv_image = cv2.imread("rr.png") 
-       
-    faces = face_cascade.detectMultiScale( 
-                cv_image,
-                scaleFactor=1.1,
-                minNeighbors=3,
-                minSize=(30, 30),
-                flags=cv2.CASCADE_SCALE_IMAGE)
-    for (x1, y1, w, h) in faces:     
-           
+    caminhoH=os.path.join(os.path.expanduser("~"), "Downloads\\opencv\\sources\\data\\haarcascades")
+    face_cascade = cv2.CascadeClassifier('{}\haarcascade_frontalface_default.xml'.format(caminhoH))
+
+    caminhoM=os.path.join(os.path.expanduser("~"), "Documents\\GitHub\\Quiz_Avengers\\photos")
+    f_image = cv2.imread('{0}\{1}.png'.format(caminhoM,vingador), -1)
+
+    f_mask = f_image[:, :, 3]
+    b_mask = cv2.bitwise_not(f_mask)
+    f_image = f_image[:, :, 0:3]
+
+    f_size = 570
+    f_ratio = float(f_size)
+
+    b_size = 2000
+
+    padding_top = ((b_size - f_size) / 3) * 2
+    padding_bottom = b_size - padding_top
+    padding_left = (b_size - f_size) / 2
+    padding_right = (b_size - f_size) / 2
+
+
+    caminhoD=os.path.join(os.path.expanduser("~"), "Downloads\\")
+    cv_image = cv2.imread("{}\selfie.png".format(caminhoD))
+
+    faces = face_cascade.detectMultiScale(
+                    cv_image,
+                    scaleFactor=1.1,
+                    minNeighbors=3,
+                    minSize=(30, 30),
+                    flags=cv2.CASCADE_SCALE_IMAGE)
+    for (x1, y1, w, h) in faces:
+
         x2 = x1 + w
         y2 = y1 + h
-        face_roi = cv_image[y1:y2, x1:x2]  
-       
-        ratio = foreground_ratio / face_roi.shape[1]
-        dimension = (foreground_size, int(face_roi.shape[0] * ratio))
-        face = cv2.resize(face_roi, dimension, interpolation = cv2.INTER_AREA)  
-          
-        background_image = cv2.copyMakeBorder(face, int(padding_top), int(padding_bottom), int(padding_left), int(padding_right), cv2.BORDER_CONSTANT)  
-    
-        background_src = background_image[0:background_size, 0:background_size]  
-        roi_bg = cv2.bitwise_and( background_src,  background_src, mask=background_mask)  
-        roi_fg = cv2.bitwise_and(foreground_image, foreground_image, mask=foreground_mask)
-        dst = cv2.add(roi_bg, roi_fg) 
+        face_roi = cv_image[y1:y2, x1:x2]
 
-        cv2.imwrite("vingador.png", dst) 
-            
-        #print("Pronto!!")
+        ratio = f_ratio / face_roi.shape[1]
+        dimension = (f_size, int(face_roi.shape[0] * ratio))
+        face = cv2.resize(face_roi, dimension, interpolation = cv2.INTER_AREA)
+
+        b_image = cv2.copyMakeBorder(face, int(padding_top), int(padding_bottom), int(padding_left), int(padding_right), cv2.BORDER_CONSTANT)
+
+        b_src = b_image[0:b_size, 0:b_size]
+        roi_bg = cv2.bitwise_and(b_src,  b_src, mask=b_mask)
+        roi_fg = cv2.bitwise_and(f_image, f_image, mask=f_mask)
+        dst = cv2.add(roi_bg, roi_fg)
+        caminhoF=os.path.join(os.path.expanduser("~"), "Documents\\GitHub\\Quiz_Avengers\\static\\img")
+        cv2.imwrite("{}\vingador.png".format(caminhoF), dst)
+
+
         cv2.waitKey()
         cv2.destroyAllWindows()
-        break     
+        break
     return None
