@@ -11,6 +11,8 @@ import img_mail as mail
 import Photos as p
 import cv2
 import json
+from random import randint
+import os
 
 app = Flask(__name__,static_url_path="")
 
@@ -68,12 +70,12 @@ def camera():
         return render_template("camera.html", n = Nome)
 
     if request.method == 'POST':
-        # path = r'C:/Users/{}/'.format(User)
+        #roda overlay
         return redirect("/loading")
 
 @app.route("/loading", methods=['GET'])
 def loading():
-    return render_template('loading.html')
+    return render_template('loading.html', x = randint(0,4)) #tela de loading aleatoria
 
 @app.route("/resultado", methods=['POST','GET'])
 def resultado():
@@ -98,7 +100,14 @@ def email():
     if request.method == "POST":
         emailto = request.form['email']
         mail.send(emailto)
-    return render_template('emailsent.html', x = emailto)
+        return redirect("/sent")
+
+@app.route("/sent", methods=['GET'])
+def sent():
+
+    if request.method == "GET":
+        emailto = request.form['email']
+        return render_template('emailsent.html', x = emailto)
 
 @app.route("/thanos", methods=['GET'])
 def thanos():

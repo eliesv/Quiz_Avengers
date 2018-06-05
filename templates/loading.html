@@ -5,13 +5,25 @@
       <link href='https://fonts.googleapis.com/css?family=Marvel' rel='stylesheet'>
   </head>
 
-  <body bgcolor="F1F1F1">
+  <body bgcolor="424F56">
 
-<h1><font color="5A5A5D">Loading...</font></h1>
-<img src="/img/loading.gif" width="600">
+<h1><font color="white" size="5">Loading...</font></h1>
+
+{% if x == 0 %}
+<img src="/img/loading0.gif" width="500">
+{% elif x == 1 %}
+<img src="/img/loading1.gif" width="500">
+{% elif x == 2 %}
+<img src="/img/loading2.gif" width="500">
+{% elif x == 3 %}
+<img src="/img/loading3.gif" width="500">
+{% elif x == 4 %}
+<img src="/img/loading4.gif" width="500">
+{% endif %}
+
 <script>window.setTimeout(function() {
     window.location.href = '/resultado';
-}, 10000);</script>
+}, 5000);</script>
 
 </body>
 

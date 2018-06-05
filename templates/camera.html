@@ -208,9 +208,9 @@
   </div>
 
 </div>
-<form name="send-form" class="send-form" method="POST" action="/camera">
+<div id="botao"><form name="send-form" class="send-form" method="POST" action="/camera">
 <input type="image" name="submit" src="/img/spidey.jpg" width="80" border="0" alt="Submit" />
-</form>
+</form></div>
 </body>
 
 <script>
@@ -224,6 +224,8 @@ var video = document.querySelector('#camera-stream'),
     download_photo_btn = document.querySelector('#download-photo'),
     error_message = document.querySelector('#error-message');
 
+var x = document.getElementById("botao");
+x.style.display = "none";
 
 // The getUserMedia interface is used for handling camera input.
 // Some browsers need a prefix so here we're covering all the options
@@ -286,8 +288,11 @@ take_photo_btn.addEventListener("click", function(e){
 
   var snap = takeSnapshot();
 
+
+
   // Show image.
   image.setAttribute('src', snap);
+
   image.classList.add("visible");
 
   // Enable delete and save buttons
@@ -296,7 +301,6 @@ take_photo_btn.addEventListener("click", function(e){
 
   // Set the href attribute of the download button to the snap url.
   download_photo_btn.href = snap;
-
   // Pause video playback of stream.
   video.pause();
 
@@ -320,6 +324,12 @@ delete_photo_btn.addEventListener("click", function(e){
 
 });
 
+download_photo_btn.addEventListener("click", function(e){
+
+  // aparece o botao de next page
+  x.style.display = "block";
+
+});
 
 
 function showVideo(){
@@ -355,6 +365,9 @@ function takeSnapshot(){
 }
 
 
+
+
+
 function displayErrorMessage(error_msg, error){
   error = error || "";
   if(error){
@@ -381,54 +394,3 @@ function hideUI(){
 </script>
 
 </html>
-
-
-
-
-<!-- <html>
-
-    <head>
-        <link rel="stylesheet" type="text/css" href="/style/style.css">
-        <link href='https://fonts.googleapis.com/css?family=Marvel' rel='stylesheet'>
-      <!--  <style>
-         html {
-             zoom: 45%;
-         }
-       </style>
-    </head>
-
-    <body bgcolor="356EFF" onload="init();"><center><font color="white">
-
-        <h1>Agora s� falta tirar uma foto, {{n}}!</h1>
-
-    <!--
-
-    Source:
-
-    https://stackoverflow.com/questions/33975431/how-can-i-capture-an-image-via-the-users-webcam-using-getusermedia
-    https://stackoverflow.com/questions/34548995/how-to-upload-file-using-pure-vanilla-javascript-and-php
-
-    -->
-
-
-     <!--
-    	<button onclick="startWebcam();">Start WebCam</button>
-    	<button onclick="stopWebcam();">Stop WebCam</button>
-      	<button onclick="snapshot();uploadImage();">Take Snapshot</button>
-      	-->
-
-      <!--
-      	<button onclick="uploadImage();">Upload Photo</button>
-
-
-    <video width=400 height=400 id="video" autoplay></video>
-
-    <canvas hidden  id="photoCanvas" width="400" height="350"></canvas>
-
-        <form name="send-form" class="send-form" method="POST" action="/camera">
-        </form>
-
-  </body>
-
-
-</html> -->

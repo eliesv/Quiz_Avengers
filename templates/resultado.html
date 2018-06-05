@@ -4,71 +4,64 @@
     <head>
         <link rel="stylesheet" type="text/css" href="/style/style.css">
         <link href='https://fonts.googleapis.com/css?family=Marvel' rel='stylesheet'>
+        <style>
+        html {
+          zoom: 73%;
+        }
+        </style>
     </head>
 
-    <body bgcolor="4C9FFF">
+    <body bgcolor="6275C9"><font color="white">
         <center>
 
-        <h1>Você é...</h1>
-        <img src="img/HAHAHAHA.jpg" width="500"><br><br>
+        <h2>Você é...</h2>
+        <img src="img/HAHAHAHA.jpg" width="400"><br><br>
 
         {% if v == "Captain America" %}
-            <h1>CAPITÃO AMÉRICA</h1>
-            HISTÓRIA: nasceu em 4 de julho de 1920. Ao completar pouco mais de 20 anos, se alistou para o exército americano para lutar na segunda guerra. Por ser franzino, foi escolhido para ser teste em uma operação para formar super-homens. Por tanto, teve esteroides injetados em seu corpo, se tornou super forte e passou a liderar um esquadrão secreto americano na guerra. Se sacrificou no fim da guerra, foi congelado e acordou 60 anos depois.
+            HISTÓRIA: Nasceu em 4 de julho de 1920. Ao completar pouco mais de 20 anos, se alistou para o exército americano para lutar na segunda guerra. Por ser franzino, foi escolhido para ser teste em uma operação para formar super-homens. Por tanto, teve esteroides injetados em seu corpo, se tornou super forte e passou a liderar um esquadrão secreto americano na guerra. Se sacrificou no fim da guerra, foi congelado e acordou 60 anos depois.
             <br><br>PODERES: super-força, liderança nata, escudo super animal.<br><br>
 
         {% elif v == "Iron Man" %}
-            <h1>HOMEM DE FERRO</h1>
             HISTÓRIA:  Herdou de seu pai a empresa Stark Enterprises após sua trágica morte. Trabalhou por anos em desenvolvimento de armas até que foi sequestrado, no meio da guerra do Afeganistão para produzir mísseis para os terroristas. Ao invés de fazer isso, construiu uma armadura para si próprio, Conseguiu fugir das mãos dos árabes e ao voltar para casa, se dedicou à construir armaduras para si próprio. Desde então, é o principal líder dos vingadores.
             <br><br>PODERES: Armadura que da a ele: Armas à laser, voo, resistência contra tiro, entre outros. <br><br>
 
         {% elif v == "Thor" %}
-            <h1>THOR</h1>
             HISTÓRIA: É filho de Odin, o deus nórdico e rei de Asgard. Thor é o deus do trovão. Após uma batalha em que seu pai o considerou arrogante, Thor foi expulso de Asgard para a Terra. Aqui, teve de provar ser digno de voltar à Asgard. Conseguiu, retornou à Asgard e ajudou seu pai à manter o trono e derrotar seu irmão Loki.
             <br><br>PODERES: controle de raio, capacidade de “voar” ao lançar seu martelo para longe. <br><br>
 
         {% elif v == "Hulk" %}
-            <h1>HULK</h1>
-            HISTÓRIA:  Hulk e Bruce Banner são a espécie de “O Médico e o Monstro” da Marvel. Enquanto Bruce Banner é um genial cientista, Hulk é um “monstro” com força sobrenatural. Ambos estão constantemente “brigando” pelo controle do corpo e mesmo com banner no controle, um leve estímulo já faz Hulk surgir. A origem do herói se deu quando Bruce estava trabalhando em uma pesquisa e, em um acidente, foi exposto à uma enorme quantidade de radiação.
+            HISTÓRIA: Hulk e Bruce Banner são a espécie de “O Médico e o Monstro” da Marvel. Enquanto Bruce Banner é um genial cientista, Hulk é um “monstro” com força sobrenatural. Ambos estão constantemente “brigando” pelo controle do corpo e mesmo com banner no controle, um leve estímulo já faz Hulk surgir. A origem do herói se deu quando Bruce estava trabalhando em uma pesquisa e, em um acidente, foi exposto à uma enorme quantidade de radiação.
             <br><br>PODERES: Super-força, pele extremamente resistente, super-pulo<br><br>
 
         {% elif v == "Spider Man" %}
-            <h1>HOMEM-ARANHA</h1>
             HISTÓRIA: O mais jovem dos Vingadores, Peter Parker se tornou o Homem Aranha quando ainda estava na escola. Em um passeio em um “zoológico”, foi picado por uma aranha extremamente rara e acabou ganhado seus poderes.  Quando Tony Stark descobriu suas habilidades, passou a se comportar como um pai e o treinador, ajudando-o a aperfeiçoar seus poderes. Então, Peter começou a combater o crime em sua cidade.
             <br><br>PODERES: Teia de aranha, escalar paredes, sentidos aperfeiçoados<br><br>
 
         {% elif v == "Doctor Strange" %}
-            <h1>DOUTOR ESTRANHO</h1>
             HISTÓRIA: Dr. Stephen Strange era um respeitado neuro-cirurgião na cidade de Nova York. Em um acidente de trânsito, acabou perdendo o controle dos braços e assim, sua profissão. Então, foi procurar um ancião que poderia, com mágica devolver o controle de seus braços. Ao encontra-lo, começa a dominar a magia e vira o novo Mago Supremo. Sua missão é defender a joia do tempo ou “olho de Agamoto”. É o único dos vingadores com poderes mágicos.
             <br><br>Poderes: Manipulação do tempo, magia<br><br>
 
         {% elif v == "Black Panther" %}
-            <h1>PANTERA NEGRA</h1>
             HISTÓRIA: T’Challa nasceu filho de T’Chaka, o rei de Wakanda e pantera negra. Após sua morte, em um atentado, T’challa vira o novo rei de Wakanda e assim, o Pantera Negra. Entretanto, com a morte de seu pai, outras pessoas passam a disputar o trono do país Africano. Entre eles esta seu primo, Killmonger. Este o derrota em uma primeira batalha e T’Challa é presumido morto. Obviamente, o herói não morreu e ao tornar sua sobrevivência pública, batalha de novo com seu primo e assume o trono.
             <br><br>PODERES: Armadura impenetrável, garras, agilidade sobre-humana, força sobre-humana<br><br>
 
         {% elif v == "Peter Quill" %}
-            <h1>PETER QUILL</h1>
             HISTÓRIA: Após a morte precoce de sua mãe, Peter Quill, que nunca havia conhecido o pai é abduzido por Yondu, que o cria em uma planeta longe da terra. Depois de crescer, vira um catador de recompensas sob o nome de Star Lord e acaba encontrando, por acaso várias pessoas com quem cria e lidera Os Guardiões da Galaxia. Eis que surge Ronan, um racista que queria exterminar as pessoas do planeta de Xandar. Com isso, os Guardiões da Galáxia o derrotam e passam a proteger a galáxia.
             <br><br>PODERES: não possui nenhum poder sobre-humano porem é um ótimo atirador e lutador. <br><br>
 
         {% elif v == "Vision" %}
-            <h1>VISÃO</h1>
             HISTÓRIA: Visão é um androide criado por Ultron para destruir os Vingadores. Entretanto, ele rebela-se contra seu criador e se une aos heróis para derrota-lo. Um traço muito importante de Visão é que ele tem, incorporado em sua cabeça uma das Joias do Infinito, mais precisamente, a Joia da Alma. Além disso, tem um romance com Wanda, a Feiticeira Escarlate.
             <br><br>PODERES: Voo, manipulação da densidade, Super-força…<br><br>
 
         {% elif v == "Scarlet Witch" %}
-            <h1>FEITICEIRA ESCARLATE</h1>
             HISTÓRIA: Wanda Maximoff, também conhecida como feiticieira escarlate foi sequestrada, quando criança, junta de seu irmão Pietro. Ainda nessa idade, os sequestradores, chamados de “Alto Revolucionário” começou a mexer em seus cromossomos e os irmãos ganharam poderes sobre-naturais, sendo que seu irmão que passou a ser chamado de Mercúrio tinha super velocidade e ela, uma feiticeira. Apesar de no início do filme bataharem contra os Vingadores, os irmãos acabam ed juntando a eles na luta contra Ultron.
             <br><br>PODERES: manipulação da realidade, Controle mental, voo, telepatia…<br><br>
 
         {% elif v == "Ant Man" %}
-            <h1>HOMEM FORMIGA</h1>
             HISTÓRIA: Scott Lang, antes de se tornar o Homem-Formiga, era um especialista em eletrônica que não conseguia sustentar sua família. Então passou a usar suas habilidades para roubar. E certa vez, em um roubo, acabou sendo preso. Na prisão, cumpriu pena e foi liberado antes. Entretanto, em seu tempo na prisão, sua esposa acabou se separando dele e ficando com a guarda da filha. Desesperado para conseguir dinheiro para tratar a doença da filha, Scott voltou para o crime. Então decidiu invadir a casa do cientista Hank Pym e roubou seu traje. Não sabia Scott, porem que Pym havia planejado tudo isso e assim, o convida para ser o Homem-Formiga.
             <br><br>PODERES: Habilidade de crescer e encolher, capacidade de se comunicar com formigas, especulá-se que tenha a habilidade de voltar/avançar no tempo através da dimensão quântica.<br><br>
 
         {% elif v == "Rocket" %}
-            <h1>ROCKET/h1>
             HISTÓRIA: Rocket nasceu em um planeta chamado Halfworld, uma colônia abandonada para doentes mentais, onde animais são manipualdos geneticamente para receberem inteligência humana e andarem em duas patas. Lá, Rocket era chefe de segurança. Depois de sair deste planeta, tem diversas história, inclusive uma em que encontra Hulk e se une a ele para defender a bíblia de Gideão. Depois, se une aos Guardiões da Gaaxia, à pedido de Peter Quill.
             <br><br>PODERES: Inteligência humana, excelente piloto, mestre atirador e tático  <br><br>
 
@@ -78,16 +71,15 @@
 
         {% endif %}
 
-        <br><br>
-
+        <table><tr><td>
         <form name="send-form" class="send-form" method="POST" action="/resultado">
             <button class="a" type="submit">Continuar</button>
         </form>
-
+      </td><td>
         <form name="send-form" class="send-form" method="GET" action="/camera">
             <button class="a" type="submit">Tirar a foto novamente</button>
         </form>
-
+      </td></tr></table>
 
     </body>
 
