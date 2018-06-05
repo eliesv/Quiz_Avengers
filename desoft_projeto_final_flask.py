@@ -77,7 +77,7 @@ def camera():
 def loading():
     return render_template('loading.html', x = randint(0,4)) #tela de loading aleatoria
 
-@app.route("/resultado", methods=['POST','GET'])
+@app.route("/resultado", methods=['POST','GET']) 
 def resultado():
 
     if request.method == "GET":
