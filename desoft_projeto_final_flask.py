@@ -8,7 +8,7 @@ import funcao as f
 import maxkey as m
 import idade as anos
 import img_mail as mail
-import Photos as p
+#import Photos as p
 import cv2
 import json
 from random import randint
@@ -70,7 +70,7 @@ def camera():
         return render_template("camera.html", n = Nome)
 
     if request.method == 'POST':
-        p.overlay()
+        #p.overlay()
         return redirect("/loading")
 
 @app.route("/loading", methods=['GET'])
@@ -81,7 +81,6 @@ def loading():
 def resultado():
 
     if request.method == "GET":
-        #p.overlay("Iron man")
         with open('variaveis.json','r') as variaveis:
             dicjson = json.loads(variaveis.read())
             vencedor = dicjson["vencedor"]
@@ -98,8 +97,11 @@ def email():
         return render_template("email.html")
 
     if request.method == "POST":
-        emailto = request.form['email']
-        mail.send(emailto)
+        if request.form['email']  != '':
+            emailto = request.form['email']
+            mail.send(emailto)
+        else:
+            emailto = False
         return redirect("/sent")
 
 @app.route("/sent", methods=['GET'])

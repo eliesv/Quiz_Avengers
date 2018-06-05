@@ -6,10 +6,14 @@
     </head>
 
 <body><center><br><br><br><br>
+{% if x != False %}
 Email enviado para {{x}}
+{% else %}
+...
+{% endif %}
 <br><br>
-    
-    <form method="GET" action="/thanos"> 
+
+    <form method="GET" action="/thanos">
         <input type="image" name="submit" src="/img/thanos2.gif" border="0" alt="Submit" />
     </form>
     <form name="send-form" class="send-form" method="GET" action="/">
