@@ -70,14 +70,14 @@ def camera():
         return render_template("camera.html", n = Nome)
 
     if request.method == 'POST':
-        #roda overlay
+        p.overlay()
         return redirect("/loading")
 
 @app.route("/loading", methods=['GET'])
 def loading():
     return render_template('loading.html', x = randint(0,4)) #tela de loading aleatoria
 
-@app.route("/resultado", methods=['POST','GET']) 
+@app.route("/resultado", methods=['POST','GET'])
 def resultado():
 
     if request.method == "GET":
