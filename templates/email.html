@@ -4,6 +4,15 @@
     <head>
         <link rel="stylesheet" type="text/css" href="/style/style.css">
         <link href='https://fonts.googleapis.com/css?family=Marvel' rel='stylesheet'>
+
+        <style>
+            input[type=email] {
+              width: 20%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              box-sizing: border-box;
+            }
+        </style>
     </head>
 
     <body bgcolor="#6d3678"><center><br><br><br><br><br>
@@ -12,12 +21,13 @@
 
             <form name="send-form" class="send-form" method="POST" action="/email">
                 <label>Você quer receber sua foto por email?</label><br><br>
-                <label>Email: </label><input type="email" name="email" required>
+                <input type="email" name="email" placeholder="Seu email" required>
                 <button class="a" type="submit">Enviar</button>
+
                 <br><br>
             </form>
 
-            <form name="send-form" class="send-form" method="GET" action="/sent">
+            <form name="send-form" class="send-form" method="GET" action="/email">
                 <button class="a" type="submit">Hoje não</button>
             </form>
 

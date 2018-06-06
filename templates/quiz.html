@@ -4,134 +4,207 @@
     <head>
         <link href='https://fonts.googleapis.com/css?family=Marvel' rel='stylesheet'>
         <link rel="stylesheet" type="text/css" href="/style/style.css">
+
+        <style>
+
+        input[type=text] {
+          width: 20%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          box-sizing: border-box;
+        }
+
+
+        input[type=number] {
+          width: 20%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          box-sizing: border-box;
+        }
+
+        /* The container */
+.container {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 28px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    left: 42%;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 15%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 30%;
+	background: white;
+}
+        </style>
     </head>
 
     <body bgcolor="#091C4B"><center><font color="white">
-        
+
         <h1>Qual vingador você é?</h1>
-        
+
         <form name="send-form" class="send-form" method="POST" action="/quiz">
 
-            <label>Seu nome:  </label><input type="text" name="nome" required/><br><br>
-            <label>Sua idade: </label><input type="number" name="idade" required/><br><br>
-    
-    
-    	 
-            <table>
-        
-            <tr>
+            <input type="text" name="nome" placeholder="Seu nome" required/><br>
+            <input type="number" name="idade" placeholder="Sua idade" required/><br><br>
+
             <label><font color="white">Para qual desses lugares você iria agora?</label><br><br>
-            </tr><tr>
-            <input type="radio" name="cidade" value="0" required>Wakanda<br>
-            <input type="radio" name="cidade" value="1">New York<br>
-            <input type="radio" name="cidade" value="2">Sokovia<br>
-            <input type="radio" name="cidade" value="3">Norway<br>
-            <input type="radio" name="cidade" value="4">Kamar-Taj<br>
-            <input type="radio" name="cidade" value="5">Tahiti<br><br>
-            </tr><tr>
+
+            <label class="container">Wakanda   <input type="radio" name="cidade" value="0" required><span class="checkmark"/></label>
+            <label class="container">New York  <input type="radio" name="cidade" value="1"><span class="checkmark"/></label>
+            <label class="container">Sokovia   <input type="radio" name="cidade" value="2"><span class="checkmark"/></label>
+            <label class="container">Norway    <input type="radio" name="cidade" value="3"><span class="checkmark"/></label>
+            <label class="container">Kamar-Taj <input type="radio" name="cidade" value="4"><span class="checkmark"/></label>
+            <label class="container">Tahiti    <input type="radio" name="cidade" value="5"><span class="checkmark"/></label><br><br>
+
             <label><font color="white">Escolha um destes animais:</label><br><br>
-            </tr><tr>
-            <input type="radio" name="animal" value="0" required>Pantera<br>
-            <input type="radio" name="animal" value="1">Guaxinim<br>
-            <input type="radio" name="animal" value="2">Formiga<br>
-            <input type="radio" name="animal" value="3">Gavião<br>
-            <input type="radio" name="animal" value="4">Lebre<br>
-            <input type="radio" name="animal" value="5">Aranha<br><br>
-            </tr><tr>
+
+            <label class="container">Pantera  <input type="radio" name="animal" value="0" required><span class="checkmark"/></label>
+            <label class="container">Guaxinim <input type="radio" name="animal" value="1"><span class="checkmark"/></label>
+            <label class="container">Formiga  <input type="radio" name="animal" value="2"><span class="checkmark"/></label>
+            <label class="container">Gavião   <input type="radio" name="animal" value="3"><span class="checkmark"/></label>
+            <label class="container">Lebre    <input type="radio" name="animal" value="4"><span class="checkmark"/></label>
+            <label class="container">Aranha   <input type="radio" name="animal" value="5"><span class="checkmark"/></label><br><br>
+
             <label><font color="white">Qual destes planetas você gostaria de visitar?</label><br><br>
-            </tr><tr>
-            <input type="radio" name="planeta" value="0" required>Titã<br>
-            <input type="radio" name="planeta" value="1">Asgard<br>
-            <input type="radio" name="planeta" value="2">Lugánenhum<br>
-            <input type="radio" name="planeta" value="3">Terra<br>
-            <input type="radio" name="planeta" value="4">Xandar<br>
-            <input type="radio" name="planeta" value="5">Jotunheim<br><br>
-            </tr><tr>
+
+            <label class="container">Titã        <input type="radio" name="planeta" value="0" required><span class="checkmark"/></label>
+            <label class="container">Asgard      <input type="radio" name="planeta" value="1"><span class="checkmark"/></label>
+            <label class="container">Lugánenhum  <input type="radio" name="planeta" value="2"><span class="checkmark"/></label>
+            <label class="container">Terra       <input type="radio" name="planeta" value="3"><span class="checkmark"/></label>
+            <label class="container">Xandar      <input type="radio" name="planeta" value="4"><span class="checkmark"/></label>
+            <label class="container">Jotunheim   <input type="radio" name="planeta" value="5"><span class="checkmark"/></label><br>
+
             <label><font color="white">Escolha um desses esportes:</label><br><br>
-            </tr><tr>
-            <input type="radio" name="esporte" value="0" required>Futebol<br>
-            <input type="radio" name="esporte" value="1">Volei<br>
-            <input type="radio" name="esporte" value="2">Basquete<br>
-            <input type="radio" name="esporte" value="3">Rugbi<br>
-            <input type="radio" name="esporte" value="4">Tênis<br>
-            <input type="radio" name="esporte" value="5">Hockey<br><br>
-            </tr><tr>
+
+            <label class="container">Futebol    <input type="radio" name="esporte" value="0" required><span class="checkmark"/></label>
+            <label class="container">Volei      <input type="radio" name="esporte" value="1"><span class="checkmark"/></label>
+            <label class="container">Basquete   <input type="radio" name="esporte" value="2"><span class="checkmark"/></label>
+            <label class="container">Rugbi      <input type="radio" name="esporte" value="3"><span class="checkmark"/></label>
+            <label class="container">Tênis      <input type="radio" name="esporte" value="4"><span class="checkmark"/></label>
+            <label class="container">Hockey     <input type="radio" name="esporte" value="5"><span class="checkmark"/></label><br><br>
+
             <label><font color="white">Qual a cor do seus olhos?</label><br><br>
-            </tr><tr>
-            <input type="radio" name="olho" value="0" required>Azul<br>
-            <input type="radio" name="olho" value="1">Verde<br>
-            <input type="radio" name="olho" value="2">Marrom<br>
-            <input type="radio" name="olho" value="3">Preto<br>
-            <input type="radio" name="olho" value="4">Depende<br>
-            <input type="radio" name="olho" value="5">Outro<br><br>
-            </tr><tr>
+
+            <label class="container">Azul<input type="radio" name="olho" value="0" required><span class="checkmark"/></label>
+            <label class="container">Verde<input type="radio" name="olho" value="1"><span class="checkmark"/></label>
+            <label class="container">Marrom<input type="radio" name="olho" value="2"><span class="checkmark"/></label>
+            <label class="container">Preto<input type="radio" name="olho" value="3"><span class="checkmark"/></label>
+            <label class="container">Depende<input type="radio" name="olho" value="4"><span class="checkmark"/></label>
+            <label class="container">Outro<input type="radio" name="olho" value="5"><span class="checkmark"/></label><br><br>
+
             <label><font color="white">Qual destas músicas você prefere?</label><br><br>
-            </tr><tr>
-            <input type="radio" name="musica" value="0" required>Bohemian Rhapsody - Queen<br>
-            <input type="radio" name="musica" value="1">Back in black - AC/DC<br>
-            <input type="radio" name="musica" value="2">Hooked on a feeling - Blue Swede<br>
-            <input type="radio" name="musica" value="3">Iron Man - Black Sabbath<br>
-            <input type="radio" name="musica" value="4">Escape (Piña Colada) - Rupert Holmes<br>
-            <input type="radio" name="musica" value="5">Mr. Blue Sky - Electric Light Orchestra<br><br>
-            </tr><tr>
+
+            <label class="container">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Bohemian Rhapsody - Queen<input type="radio" name="musica" value="0" required><span class="checkmark"/></label>
+            <label class="container">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBack in black - AC/DC<input type="radio" name="musica" value="1"><span class="checkmark"/></label>
+            <label class="container">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspHooked on a feeling - Blue Swede<input type="radio" name="musica" value="2"><span class="checkmark"/></label>
+            <label class="container">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIron Man - Black Sabbath<input type="radio" name="musica" value="3"><span class="checkmark"/></label>
+            <label class="container">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspEscape (Piña Colada) - Rupert Holmes<input type="radio" name="musica" value="4"><span class="checkmark"/></label>
+            <label class="container">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMr. Blue Sky - Electric Light Orchestra<input type="radio" name="musica" value="5"><span class="checkmark"/></label><br><br>
+
             <label><font color="white">Qual a cor da sua camiseta agora?</label><br><br>
-            </tr><tr>
-            <input type="radio" name="camisa" value="0" required>Cinza<br>
-            <input type="radio" name="camisa" value="1">Branco<br>
-            <input type="radio" name="camisa" value="2">Preto<br>
-            <input type="radio" name="camisa" value="3">Azul<br>
-            <input type="radio" name="camisa" value="4">Vermelho<br>
-            <input type="radio" name="camisa" value="5">Outra<br><br>
-            </tr><tr>
+
+            <label class="container">Cinza<input type="radio" name="camisa" value="0" required><span class="checkmark"/></label>
+            <label class="container">Branco<input type="radio" name="camisa" value="1"><span class="checkmark"/></label>
+            <label class="container">Preto<input type="radio" name="camisa" value="2"><span class="checkmark"/></label>
+            <label class="container">Azul<input type="radio" name="camisa" value="3"><span class="checkmark"/></label>
+            <label class="container">Vermelho<input type="radio" name="camisa" value="4"><span class="checkmark"/></label>
+            <label class="container">Outra<input type="radio" name="camisa" value="5"><span class="checkmark"/></label><br><br>
+
             <label><font color="white">Escolha uma serie de filmes:</label><br><br>
-            </tr><tr>
-            <input type="radio" name="filme" value="0" Required>Star Wars <br>
-            <input type="radio" name="filme" value="1">De Volta para o Futuro <br>
-            <input type="radio" name="filme" value="2">Rocky Balboa <br>
-            <input type="radio" name="filme" value="3">Senhor dos Anéis <br>
-            <input type="radio" name="filme" value="4">O Cavaleiro das Trevas <br>
-            <input type="radio" name="filme" value="5">Harry Potter <br><br>
-            </tr><tr>
+
+            <label class="container">Star Wars<input type="radio" name="filme" value="0" Required><span class="checkmark"/></label>
+            <label class="container">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDe Volta para o Futuro<input type="radio" name="filme" value="1"><span class="checkmark"/></label>
+            <label class="container">Rocky Balboa<input type="radio" name="filme" value="2"><span class="checkmark"/></label>
+            <label class="container">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSenhor dos Anéis<input type="radio" name="filme" value="3"><span class="checkmark"/></label>
+            <label class="container">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspO Cavaleiro das Trevas<input type="radio" name="filme" value="4"><span class="checkmark"/></label>
+            <label class="container">Harry Potter<input type="radio" name="filme" value="5"><span class="checkmark"/></label> <br><br>
+
             <label><font color="white">Qual dessas pedras do infinito você gostaria de usar?</label><br><br>
-            </tr><tr>
-            <input type="radio" name="pedra" value="0" Required>Poder<br>
-            <input type="radio" name="pedra" value="1">Tempo<br>
-            <input type="radio" name="pedra" value="2">Realidade<br>
-            <input type="radio" name="pedra" value="3">Mente<br>
-            <input type="radio" name="pedra" value="4">Alma<br>
-            <input type="radio" name="pedra" value="5">Espaço<br><br>
-            </tr><tr>
+
+            <label class="container">Poder<input type="radio" name="pedra" value="0" Required><span class="checkmark"/></label>
+            <label class="container">Tempo<input type="radio" name="pedra" value="1"><span class="checkmark"/></label>
+            <label class="container">Realidade<input type="radio" name="pedra" value="2"><span class="checkmark"/></label>
+            <label class="container">Mente<input type="radio" name="pedra" value="3"><span class="checkmark"/></label>
+            <label class="container">Alma<input type="radio" name="pedra" value="4"><span class="checkmark"/></label>
+            <label class="container">Espaço<input type="radio" name="pedra" value="5"><span class="checkmark"/></label><br><br>
+
             <label><font color="white">Escolha uma cor:</label><br><br>
-            </tr><tr>
-            <input type="radio" name="cor" value="0" Required>Roxo<br>
-            <input type="radio" name="cor" value="1">Verde<br>
-            <input type="radio" name="cor" value="2">Vermelho<br>
-            <input type="radio" name="cor" value="3">Amarelo<br>
-            <input type="radio" name="cor" value="4">Laranja<br>
-            <input type="radio" name="cor" value="5">Azul<br><br>
-            </tr><tr>
+
+            <label class="container">Roxo<input type="radio" name="cor" value="0" Required><span class="checkmark"/></label>
+            <label class="container">Verde<input type="radio" name="cor" value="1"><span class="checkmark"/></label>
+            <label class="container">Vermelho<input type="radio" name="cor" value="2"><span class="checkmark"/></label>
+            <label class="container">Amarelo<input type="radio" name="cor" value="3"><span class="checkmark"/></label>
+            <label class="container">Laranja<input type="radio" name="cor" value="4"><span class="checkmark"/></label>
+            <label class="container">Azul<input type="radio" name="cor" value="5"><span class="checkmark"/></label><br><br>
+
             <label><font color="white">Qual dessas comidas você prefere?</label><br><br>
-            </tr><tr>
-            <input type="radio" name="comida" value="0" Required>Lasagna<br>
-            <input type="radio" name="comida" value="1">Pizza<br>
-            <input type="radio" name="comida" value="2">Shawarma<br>
-            <input type="radio" name="comida" value="3">Hamburger<br>
-            <input type="radio" name="comida" value="4">Salada<br>
-            <input type="radio" name="comida" value="5">Sorvete<br><br>
-            </tr><tr>
+
+            <label class="container">Lasagna<input type="radio" name="comida" value="0" Required><span class="checkmark"/></label>
+            <label class="container">Pizza<input type="radio" name="comida" value="1"><span class="checkmark"/></label>
+            <label class="container">Sushi<input type="radio" name="comida" value="2"><span class="checkmark"/></label>
+            <label class="container">Hamburger<input type="radio" name="comida" value="3"><span class="checkmark"/></label>
+            <label class="container">Salada<input type="radio" name="comida" value="4"><span class="checkmark"/></label>
+            <label class="container">Sorvete<input type="radio" name="comida" value="5"><span class="checkmark"/></label><br><br>
+            <label class="container">
             <label><font color="white">Escolha uma serie de TV:</label><br><br>
-            
-            <input type="radio" name="serie" value="0" required>Game of Thrones <br>
-            <input type="radio" name="serie" value="1">Prison Break <br>
-            <input type="radio" name="serie" value="2">Lost <br>
-            <input type="radio" name="serie" value="3">Greys Anatomy<br>
-            <input type="radio" name="serie" value="4">Simpsons<br>
-            <input type="radio" name="serie" value="5">Friends<br>
-            </tr>
-            </table>
+
+            <label class="container">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Game of Thrones<input type="radio" name="serie" value="0" required><span class="checkmark"/></label>
+            <label class="container">Prison Break<input type="radio" name="serie" value="1"><span class="checkmark"/></label>
+            <label class="container">Lost<input type="radio" name="serie" value="2"><span class="checkmark"/></label>
+            <label class="container">&nbsp&nbsp Greys Anatomy<input type="radio" name="serie" value="3"><span class="checkmark"/></label>
+            <label class="container">Simpsons<input type="radio" name="serie" value="4"><span class="checkmark"/></label>
+            <label class="container">Friends<input type="radio" name="serie" value="5"><span class="checkmark"/></label>
+
             <button type="submit" class="a">Continuar</button>
 
         </form>
-   
+
      <body>
 <html>

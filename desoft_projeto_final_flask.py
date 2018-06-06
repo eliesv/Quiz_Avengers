@@ -13,11 +13,14 @@ import cv2
 import json
 from random import randint
 import os
+from shutil import copyfile
+from copy_file import copy_file, copy_file2
+from delete_file import delete_file
+
 
 app = Flask(__name__,static_url_path="")
 
 dicionario = {}
-vencedor = ""
 
 @app.route("/")
 def introdução():
@@ -55,6 +58,7 @@ def quiz():
         dicjson = {}
         dicjson["nome"] = request.form["nome"]
         dicjson["vencedor"] = vencedor
+        dicjson["contador"] = 0
         with open('variaveis.json','w') as variaveis:
             variaveis.write(json.dumps(dicjson))
 
@@ -67,6 +71,17 @@ def camera():
         with open('variaveis.json','r') as variaveis:
             dicjson = json.loads(variaveis.read())
             Nome = dicjson["nome"]
+            contador = dicjson["contador"]
+
+        if os.path.isfile(r"C:/Users/elies/Downloads/selfie.png"):
+            copy_file(contador)
+            copy_file2()
+            delete_file(r"C:/Users/elies/Downloads/selfie.png")
+
+        dicjson["contador"] += 1
+        with open('variaveis.json','w') as variaveis:
+            variaveis.write(json.dumps(dicjson))
+
         return render_template("camera.html", n = Nome)
 
     if request.method == 'POST':
@@ -97,19 +112,14 @@ def email():
         return render_template("email.html")
 
     if request.method == "POST":
+
         if request.form['email']  != '':
             emailto = request.form['email']
             mail.send(emailto)
-        else:
-            emailto = False
-        return redirect("/sent")
-
-@app.route("/sent", methods=['GET'])
-def sent():
-
-    if request.method == "GET":
-        emailto = request.form['email']
-        return render_template('emailsent.html', x = emailto)
+            # with open("maillist.txt", 'a') as maillist: #Salva os emails
+            #     maillist.write(emailto)
+            #     maillist.write("\n")
+            return render_template('emailsent.html', x = emailto)
 
 @app.route("/thanos", methods=['GET'])
 def thanos():
