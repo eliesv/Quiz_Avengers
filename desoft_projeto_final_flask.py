@@ -73,10 +73,13 @@ def camera():
             Nome = dicjson["nome"]
             contador = dicjson["contador"]
 
-        if os.path.isfile(r"C:/Users/elies/Downloads/selfie.png"):
+
+        pathSelfie=os.path.join(os.path.expanduser("~"), "Downloads\\selfie.png")
+        pathSelfie=pathSelfie.replace("\\","/")
+        if os.path.isfile(pathSelfie):
             copy_file(contador)
             copy_file2()
-            delete_file(r"C:/Users/elies/Downloads/selfie.png")
+            delete_file(pathSelfie)
 
         dicjson["contador"] += 1
         with open('variaveis.json','w') as variaveis:
