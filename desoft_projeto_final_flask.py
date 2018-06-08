@@ -123,7 +123,6 @@ def email():
             # with open("maillist.txt", 'a') as maillist: #Salva os emails
             #     maillist.write(emailto)
             #     maillist.write("\n")
-        #return render_template('emailsent.html', x = emailto)
         return redirect("/sent")
 
 @app.route("/sent", methods=['POST','GET'])
