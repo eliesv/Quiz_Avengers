@@ -107,19 +107,34 @@ def resultado():
 
 @app.route("/email", methods=['POST','GET'])
 def email():
-
+    with open('email.txt','w') as bb:
+        bb.write("jogoavengers@gmail.com")
     if request.method == "GET":
         return render_template("email.html")
 
     if request.method == "POST":
-
-        if request.form['email']  != '':
-            emailto = request.form['email']
-            mail.send(emailto)
+        with open('email.txt','w') as bb:
+             if request.form['email'] !='':
+                bb.write(request.form['email'])
+        with open('email.txt','r') as bb:
+                 emailto = bb.read()
+                 mail.send(emailto)
+                 print(emailto)
             # with open("maillist.txt", 'a') as maillist: #Salva os emails
             #     maillist.write(emailto)
             #     maillist.write("\n")
-            return render_template('emailsent.html', x = emailto)
+        #return render_template('emailsent.html', x = emailto)
+        return redirect("/sent")
+
+@app.route("/sent", methods=['POST','GET'])
+def sent():
+    if request.method == "GET":
+        with open('email.txt','r') as bb:
+             emailto = bb.read()
+        return render_template("emailsent.html", x = emailto)
+
+    # if request.method == "POST":
+    #     return render_template('emailsent.html')
 
 @app.route("/thanos", methods=['GET'])
 def thanos():
