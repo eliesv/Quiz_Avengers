@@ -19,20 +19,46 @@
 
         <font color="white">
 
+
+            <label>Você quer receber sua foto por email?</label><br><br>
+
+
+            <form name="send-form" class="send-form" method="GET" action="/email">
+                <button id="hoje_nao" class="a" type="submit">Hoje não</button>
+            </form>
+
+            <form name="send-form" class="send-form">
+                <button id="pode_ser" class="a" type="submit">Pode ser</button>
+            </form>
+
+            <div id="botoes">
             <form name="send-form" class="send-form" method="POST" action="/email">
-                <label>Você quer receber sua foto por email?</label><br><br>
                 <input type="email" name="email" placeholder="Seu email" required>
                 <button class="a" type="submit">Enviar</button>
-
+              </div>
                 <br><br>
             </form>
 
-            <form name="send-form" class="send-form" method="GET" action="/email">
-                <button class="a" type="submit">Hoje não</button>
-            </form>
 
         </font>
 
     </body>
 
 </html>
+<script>
+var x = document.getElementById("botoes");
+var y = document.getElementById("pode_ser");
+var z = document.getElementById("hoje_nao");
+x.style.display = "none";
+
+poder_ser_btn = document.querySelector('#pode_ser')
+poder_ser_btn.addEventListener("click", function(e){
+  // aparece
+  e.preventDefault();
+  x.style.display = "block";
+  y.style.display = "none";
+  z.style.display = "none";
+});
+
+
+</script>
