@@ -20,7 +20,7 @@ import subprocess
 app = Flask(__name__,static_url_path="")
 
 dicionario = {}
-
+pathquiz=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/quiz/")
 @app.route("/")
 def introdução():
     return render_template("intro.html")
@@ -159,7 +159,7 @@ def criar():
 
 
 
-        with open('criar.txt','w') as cr:
+        with open('{}criar.txt'.format(pathquiz),'w') as cr:
             cr.write('<html> <head><link rel="stylesheet" type="text/css" href="style/style.css"><link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet"></head>\n')
             cr.write('<center><br><body bgcolor="#091C4B"><font color="white"><h1>Criar meu Quiz</h1>\n')
             cr.write('<form name="send-form" class="send-form" method="POST" action="/criar2">\n')
@@ -178,7 +178,7 @@ def criar():
 
 
         pathHTML=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/templates/criar2.html")
-        contents = open("criar.txt","r")
+        contents = open("{}criar.txt".format(pathquiz),"r")
         with open(pathHTML, "w") as e:
             for line in contents.readlines():
                 e.write(line)
@@ -205,12 +205,12 @@ def criar2():
                         listafinal.append(j)
         for h in listafinal:
             dict_respostas[h]=0
-        with open('Respostas.json','w') as r:
+        with open('{}Respostas.json'.format(pathquiz),'w') as r:
             r.write(json.dumps(dict_respostas))
 
 
 
-        with open('Quizfinal.txt','w') as cri:
+        with open('{}Quizfinal.txt'.format(pathquiz),'w') as cri:
             cri.write('<html> <head><link rel="stylesheet" type="text/css" href="style/style.css"><link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet"></head>\n')
             cri.write('<center><br><body bgcolor="#091C4B"><font color="white"><h1>Quiz</h1>\n')
             cri.write('<form name="send-form" class="send-form" method="GET" action="/seuquiz">')
@@ -221,15 +221,37 @@ def criar2():
                     re_form2=request.form['opcao{}_{}'.format(i,a)]
                     cri.write('<label class="container">{}<input type="radio" name="{}" value="{}" required><span class="checkmark"/></label><br> \n  '.format(re_form2,re_form,a))
                     cri.write('<br>\n')
-            #cri.write('<button class="a" type="sumbit">OK</button></form>')
+            cri.write('<button class="a" type="sumbit">OK</button></form>')
             cri.write('</body>')
             cri.write('</html>')
 
         pathHTMLFinal=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/templates/QuizFinal.html")
-        contents = open("Quizfinal.txt","r")
+        contents = open("{}Quizfinal.txt".format(pathquiz),"r")
         with open(pathHTMLFinal, "w") as e:
             for lines in contents.readlines():
                 e.write(lines)
+
+
+        with open('{}funcao.txt'.format(pathquiz),'w') as f:
+            f.write("from flask import request\n")
+            f.write("def multiplaescolha(pergunta):\n")
+            f.write("\tlista=[] \n")
+            f.write("\tx = request.form[pergunta] \n")
+            for i in range(0,dicjson["Qperg"]):
+                re_form=request.form['pergunta{}'.format(i)]
+                f.write('\tif pergunta=="{}": \n'.format(re_form))
+                for a in range(0,dicjson["Qopc"]):
+                    f.write('\t\tif x=={}:\n'.format(a))
+                    re_form3=request.form['resposta{}_{}'.format(i,a)]
+                    lista=re_form3.split(",")
+                    f.write('\t\t\tlista={}\n'.format(lista))
+            f.write("\treturn lista \n")
+
+            pathfuncaoFinal=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/quiz/funcao.py")
+            contents = open("{}funcao.txt".format(pathquiz),"r")
+            with open(pathfuncaoFinal, "w") as e:
+                for lines in contents.readlines():
+                    e.write(lines)
 
         return redirect("/seuquiz")
 
