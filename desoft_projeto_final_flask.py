@@ -21,8 +21,7 @@ import subprocess
 app = Flask(__name__,static_url_path="")
 
 dicionario = {}
-Qperg=0
-Qopc=0
+
 @app.route("/")
 def introdução():
     return render_template("intro.html")
@@ -60,6 +59,8 @@ def quiz():
         dicjson["nome"] = request.form["nome"]
         dicjson["vencedor"] = vencedor
         dicjson["contador"] = 0
+        dicjson["Qperg"]=0
+        dicjson["Qopc"]=0
         with open('variaveis.json','w') as variaveis:
             variaveis.write(json.dumps(dicjson))
 
@@ -149,17 +150,25 @@ def criar():
         return render_template("criar.html")
 
     if request.method == "POST":
-        Qperg=int(request.form['perguntas'])
-        Qopc=int(request.form['opcoes'])
+        with open('variaveis.json','r') as variaveis:
+            dicjson = json.loads(variaveis.read())
+        dicjson["Qperg"] = int(request.form['perguntas'])
+        dicjson["Qopc"] = int(request.form['opcoes'])
+        with open('variaveis.json','w') as variaveis:
+            variaveis.write(json.dumps(dicjson))
+
+
+
         with open('criar.txt','w') as cr:
             cr.write('<html> <head><link rel="stylesheet" type="text/css" href="style/style.css"><link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet"></head>\n')
             cr.write('<center><br><body bgcolor="#091C4B"><center><font color="white"><h1>Criar meu Quiz</h1>\n')
             cr.write('<form name="send-form" class="send-form" method="POST" action="/criar2">\n')
             cr.write('\n')
-            for i in range(0,Qperg):
+            for i in range(0,dicjson["Qperg"]):
                 cr.write('<input type="text" name="pergunta{}" placeholder="Pergunta {}" required/><br> \n'.format(i,i))
-                for a in range(0,Qopc):
-                    cr.write('<input type="text" name="opcao{}" placeholder="Opcao {}" required/><br> \n  '.format(a,a))
+                for a in range(0,dicjson["Qopc"]):
+                    cr.write('<input type="text" name="opcao{}" placeholder="Opcao {}" required/>\n  '.format(a,a))
+                    cr.write('<input type="text" name="resposta{}" placeholder="Resposta {}" required/><br> \n  '.format(a,a))
                 cr.write('<br>\n')
             cr.write('<button class="a" type="submit">OK</button> \n')
             cr.write('</form>')
@@ -179,20 +188,25 @@ def criar():
 def criar2():
     if request.method == "GET":
         return render_template("criar2.html")
+
     if request.method == "POST":
-        # Qperg=int(request.form['perguntas'])
-        # Qopc=int(request.form['opcoes'])
+        with open('variaveis.json','r') as variaveis:
+            dicjson = json.loads(variaveis.read())
+        for e in range(0,dicjson["Qopc"]):
+            request.form['resposta{}'.format(e)]
+
         with open('Quizfinal.txt','w') as cri:
-            for i in range(0,Qperg):
-                # re_form=request.form['pergunta{}'.format(i)]
-                # cri.write('<label><font color="white">{}</label><br><br> \n'.format(re_form))
-                cri.write("funciona")
-                for a in range(0,Qopc):
-                    # re_form2=request.form['opcao{}'.format(a)]
-                    # cri.write('<label class="container">{}<input type="radio" name="" value="{}" required><span class="checkmark"/></label> \n  '.format(re_form2,a))
-                    cri.write('funciona')
+            for i in range(0,dicjson["Qperg"]):
+                re_form=request.form['pergunta{}'.format(i)]
+                cri.write('<label><font color="white">{}</label><br><br> \n'.format(re_form))
+                for a in range(0,dicjson["Qopc"]):
+                    re_form2=request.form['opcao{}'.format(a)]
+                    cri.write('<label class="container">{}<input type="radio" name="{}" value="{}" required><span class="checkmark"/></label> \n  '.format(re_form2,re_form,a))
                 cri.write('\n')
-            return redirect("/")
+
+
+
+        return redirect("/")
 
 
 @app.route("/thanos", methods=['GET'])

@@ -1,0 +1,12 @@
+<label><font color="white">Isso funciona?</label><br><br> 
+<label class="container">sim<input type="radio" name="Isso funciona?" value="0" required><span class="checkmark"/></label> 
+  <label class="container">nao sei<input type="radio" name="Isso funciona?" value="1" required><span class="checkmark"/></label> 
+  
+<label><font color="white">Se funcionar vai ser fudido?</label><br><br> 
+<label class="container">sim<input type="radio" name="Se funcionar vai ser fudido?" value="0" required><span class="checkmark"/></label> 
+  <label class="container">nao sei<input type="radio" name="Se funcionar vai ser fudido?" value="1" required><span class="checkmark"/></label> 
+  
+<label><font color="white">Qual a chance de funcionar de primeira?</label><br><br> 
+<label class="container">sim<input type="radio" name="Qual a chance de funcionar de primeira?" value="0" required><span class="checkmark"/></label> 
+  <label class="container">nao sei<input type="radio" name="Qual a chance de funcionar de primeira?" value="1" required><span class="checkmark"/></label> 
+  
