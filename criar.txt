@@ -5,41 +5,20 @@
 <input type="text" name="pergunta0" placeholder="Pergunta 0" required/><br> 
 <input type="text" name="opcao0" placeholder="Opcao 0" required/><br> 
   <input type="text" name="opcao1" placeholder="Opcao 1" required/><br> 
+  <input type="text" name="opcao2" placeholder="Opcao 2" required/><br> 
+  <input type="text" name="opcao3" placeholder="Opcao 3" required/><br> 
   <br>
 <input type="text" name="pergunta1" placeholder="Pergunta 1" required/><br> 
 <input type="text" name="opcao0" placeholder="Opcao 0" required/><br> 
   <input type="text" name="opcao1" placeholder="Opcao 1" required/><br> 
+  <input type="text" name="opcao2" placeholder="Opcao 2" required/><br> 
+  <input type="text" name="opcao3" placeholder="Opcao 3" required/><br> 
   <br>
 <input type="text" name="pergunta2" placeholder="Pergunta 2" required/><br> 
 <input type="text" name="opcao0" placeholder="Opcao 0" required/><br> 
   <input type="text" name="opcao1" placeholder="Opcao 1" required/><br> 
+  <input type="text" name="opcao2" placeholder="Opcao 2" required/><br> 
+  <input type="text" name="opcao3" placeholder="Opcao 3" required/><br> 
   <br>
-<input type="text" name="pergunta3" placeholder="Pergunta 3" required/><br> 
-<input type="text" name="opcao0" placeholder="Opcao 0" required/><br> 
-  <input type="text" name="opcao1" placeholder="Opcao 1" required/><br> 
-  <br>
-<input type="text" name="pergunta4" placeholder="Pergunta 4" required/><br> 
-<input type="text" name="opcao0" placeholder="Opcao 0" required/><br> 
-  <input type="text" name="opcao1" placeholder="Opcao 1" required/><br> 
-  <br>
-<input type="text" name="pergunta5" placeholder="Pergunta 5" required/><br> 
-<input type="text" name="opcao0" placeholder="Opcao 0" required/><br> 
-  <input type="text" name="opcao1" placeholder="Opcao 1" required/><br> 
-  <br>
-<input type="text" name="pergunta6" placeholder="Pergunta 6" required/><br> 
-<input type="text" name="opcao0" placeholder="Opcao 0" required/><br> 
-  <input type="text" name="opcao1" placeholder="Opcao 1" required/><br> 
-  <br>
-<input type="text" name="pergunta7" placeholder="Pergunta 7" required/><br> 
-<input type="text" name="opcao0" placeholder="Opcao 0" required/><br> 
-  <input type="text" name="opcao1" placeholder="Opcao 1" required/><br> 
-  <br>
-<input type="text" name="pergunta8" placeholder="Pergunta 8" required/><br> 
-<input type="text" name="opcao0" placeholder="Opcao 0" required/><br> 
-  <input type="text" name="opcao1" placeholder="Opcao 1" required/><br> 
-  <br>
-<input type="text" name="pergunta9" placeholder="Pergunta 9" required/><br> 
-<input type="text" name="opcao0" placeholder="Opcao 0" required/><br> 
-  <input type="text" name="opcao1" placeholder="Opcao 1" required/><br> 
-  <br>
-<button class="a" type="submit">OK</button></form></body></html>
+<button class="a" type="submit">OK</button> 
+</form></body></html>

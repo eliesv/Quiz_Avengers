@@ -21,7 +21,8 @@ import subprocess
 app = Flask(__name__,static_url_path="")
 
 dicionario = {}
-
+Qperg=0
+Qopc=0
 @app.route("/")
 def introdução():
     return render_template("intro.html")
@@ -160,12 +161,13 @@ def criar():
                 for a in range(0,Qopc):
                     cr.write('<input type="text" name="opcao{}" placeholder="Opcao {}" required/><br> \n  '.format(a,a))
                 cr.write('<br>\n')
-            cr.write('<button class="a" type="submit">OK</button></form></body></html>')
-            # for i in range(0,Qperg):
-            #     cr.write('<label>{}<font color="white"> </label><br><br> \n'.format(i))
-            #     for i in range(0,Qopc):
-            #         cr.write('<label class="container">{}<input type="radio" name="" value="{}" required><span class="checkmark"/></label> \n  '.format(i,i))
-            #     cr.write('\n')
+            cr.write('<button class="a" type="submit">OK</button> \n')
+            cr.write('</form>')
+            cr.write('</body>')
+            cr.write('</html>')
+
+
+
         pathHTML=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/templates/criar2.html")
         contents = open("criar.txt","r")
         with open(pathHTML, "w") as e:
@@ -178,11 +180,18 @@ def criar2():
     if request.method == "GET":
         return render_template("criar2.html")
     if request.method == "POST":
-            # for i in range(0,Qperg):
-            #     cr.write('<label>{}<font color="white"> </label><br><br> \n'.format(i))
-            #     for i in range(0,Qopc):
-            #         cr.write('<label class="container">{}<input type="radio" name="" value="{}" required><span class="checkmark"/></label> \n  '.format(i,i))
-            #     cr.write('\n')
+        # Qperg=int(request.form['perguntas'])
+        # Qopc=int(request.form['opcoes'])
+        with open('Quizfinal.txt','w') as cri:
+            for i in range(0,Qperg):
+                # re_form=request.form['pergunta{}'.format(i)]
+                # cri.write('<label><font color="white">{}</label><br><br> \n'.format(re_form))
+                cri.write("funciona")
+                for a in range(0,Qopc):
+                    # re_form2=request.form['opcao{}'.format(a)]
+                    # cri.write('<label class="container">{}<input type="radio" name="" value="{}" required><span class="checkmark"/></label> \n  '.format(re_form2,a))
+                    cri.write('funciona')
+                cri.write('\n')
             return redirect("/")
 
 
