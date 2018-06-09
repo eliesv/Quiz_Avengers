@@ -208,14 +208,22 @@ def criar2():
 
 
         with open('Quizfinal.txt','w') as cri:
+            cri.write('<html> <head><link rel="stylesheet" type="text/css" href="style/style.css"><link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet"></head>\n')
+            cri.write('<center><br><body bgcolor="#091C4B"><center><font color="white"><h1>Quiz</h1>\n')
             for i in range(0,dicjson["Qperg"]):
                 re_form=request.form['pergunta{}'.format(i)]
                 cri.write('<label><font color="white">{}</label><br><br> \n'.format(re_form))
                 for a in range(0,dicjson["Qopc"]):
                     re_form2=request.form['opcao{}_{}'.format(i,a)]
-                    cri.write('<label class="container">{}<input type="radio" name="{}" value="{}" required><span class="checkmark"/></label> \n  '.format(re_form2,re_form,a))
+                    cri.write('<label class="container">{}<input type="radio" name="{}" value="{}" required><span class="checkmark"/></label><br> \n  '.format(re_form2,re_form,a))
                 cri.write('\n')
-
+                cri.write('</body>')
+                cri.write('</html>')
+        pathHTMLFinal=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/QuizFinal.html")
+        contents = open("Quizfinal.txt","r")
+        with open(pathHTMLFinal, "w") as e:
+            for lines in contents.readlines():
+                e.write(lines)
 
 
         return redirect("/")
