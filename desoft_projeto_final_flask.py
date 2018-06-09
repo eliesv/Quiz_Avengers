@@ -139,7 +139,6 @@ def sent():
              emailto = bb.read()
         return render_template("emailsent.html", x = emailto)
 
-<<<<<<< HEAD
     # if request.method == "POST":
     #     return render_template('emailsent.html')
 
@@ -160,8 +159,6 @@ def criar():
     return redirect("/")
 
 
-=======
->>>>>>> 46ca34f9dd47a03db64ced9ac336f0c550558b4c
 @app.route("/thanos", methods=['GET'])
 def thanos():
     return render_template('thanos.html')
