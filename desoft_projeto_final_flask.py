@@ -16,7 +16,7 @@ import os
 from shutil import copyfile
 from copy_file import copy_file, copy_file2
 from delete_file import delete_file
-
+import subprocess
 
 app = Flask(__name__,static_url_path="")
 
@@ -89,6 +89,7 @@ def camera():
 
     if request.method == 'POST':
         #p.overlay()
+        subprocess.Popen("Photos.py 1", shell=True)
         return redirect("/loading")
 
 @app.route("/loading", methods=['GET'])
