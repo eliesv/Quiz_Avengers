@@ -71,24 +71,28 @@ def camera():
         with open('variaveis.json','r') as variaveis:
             dicjson = json.loads(variaveis.read())
             Nome = dicjson["nome"]
+
+        pathSelfie=os.path.join(os.path.expanduser("~"), "Downloads/selfie.png")
+        if os.path.isfile(pathSelfie):
+            delete_file(pathSelfie)
+
+        return render_template("camera.html", n = Nome)
+
+    if request.method == 'POST':
+
+        with open('variaveis.json','r') as variaveis:
+            dicjson = json.loads(variaveis.read())
             contador = dicjson["contador"]
 
-
-        pathSelfie=os.path.join(os.path.expanduser("~"), "Downloads\\selfie.png")
-        pathSelfie=pathSelfie.replace("\\","/")
+        pathSelfie=os.path.join(os.path.expanduser("~"), "Downloads/selfie.png")
         if os.path.isfile(pathSelfie):
             copy_file(contador)
             copy_file2()
-            delete_file(pathSelfie)
 
         dicjson["contador"] += 1
         with open('variaveis.json','w') as variaveis:
             variaveis.write(json.dumps(dicjson))
 
-        return render_template("camera.html", n = Nome)
-
-    if request.method == 'POST':
-        #p.overlay()
         subprocess.Popen("Photos.py 1", shell=True)
         return redirect("/loading")
 
@@ -111,22 +115,21 @@ def resultado():
 
 @app.route("/email", methods=['POST','GET'])
 def email():
-    with open('email.txt','w') as bb:
-        bb.write("jogoavengers@gmail.com")
+
     if request.method == "GET":
         return render_template("email.html")
 
     if request.method == "POST":
-        with open('email.txt','w') as bb:
-             if request.form['email'] !='':
-                bb.write(request.form['email'])
-        with open('email.txt','r') as bb:
-                 emailto = bb.read()
-                 mail.send(emailto)
-                 print(emailto)
-            # with open("maillist.txt", 'a') as maillist: #Salva os emails
-            #     maillist.write(emailto)
-            #     maillist.write("\n")
+
+        if request.form['email'] != '':
+            emailto = request.form['email']
+        else:
+            with open('email.txt', 'r') as bb:
+                emailto = bb.read()
+
+        mail.send(emailto)
+        print(emailto)
+
         return redirect("/sent")
 
 @app.route("/sent", methods=['POST','GET'])
@@ -136,6 +139,7 @@ def sent():
              emailto = bb.read()
         return render_template("emailsent.html", x = emailto)
 
+<<<<<<< HEAD
     # if request.method == "POST":
     #     return render_template('emailsent.html')
 
@@ -156,6 +160,8 @@ def criar():
     return redirect("/")
 
 
+=======
+>>>>>>> 46ca34f9dd47a03db64ced9ac336f0c550558b4c
 @app.route("/thanos", methods=['GET'])
 def thanos():
     return render_template('thanos.html')
