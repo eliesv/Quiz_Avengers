@@ -167,8 +167,8 @@ def criar():
             for i in range(0,dicjson["Qperg"]):
                 cr.write('<input type="text" name="pergunta{}" placeholder="Pergunta {}" required/><br> \n'.format(i,i))
                 for a in range(0,dicjson["Qopc"]):
-                    cr.write('<input type="text" name="opcao{}" placeholder="Opcao {}" required/>\n  '.format(a,a))
-                    cr.write('<input type="text" name="resposta{}" placeholder="Resposta {}" required/><br> \n  '.format(a,a))
+                    cr.write('<input type="text" name="opcao{}_{}" placeholder="Opcao {}_{}" required/>\n  '.format(i,a,i,a))
+                    cr.write('<input type="text" name="resposta{}_{}" placeholder="Resposta {}_{}" required/><br> \n  '.format(i,a,i,a))
                 cr.write('<br>\n')
             cr.write('<button class="a" type="submit">OK</button> \n')
             cr.write('</form>')
@@ -190,17 +190,29 @@ def criar2():
         return render_template("criar2.html")
 
     if request.method == "POST":
+
         with open('variaveis.json','r') as variaveis:
             dicjson = json.loads(variaveis.read())
-        for e in range(0,dicjson["Qopc"]):
-            request.form['resposta{}'.format(e)]
+
+        listafinal=[]
+        dict_respostas={}
+        for i in range(0,dicjson["Qperg"]):
+            for a in range(0,dicjson["Qopc"]):
+                resp=request.form['resposta{}_{}'.format(i,a)]
+                listafinal.append(resp)
+        for i in listafinal:
+            dict_respostas[i]=0
+        with open('Respostas.json','w') as r:
+            r.write(json.dumps(dict_respostas))
+
+
 
         with open('Quizfinal.txt','w') as cri:
             for i in range(0,dicjson["Qperg"]):
                 re_form=request.form['pergunta{}'.format(i)]
                 cri.write('<label><font color="white">{}</label><br><br> \n'.format(re_form))
                 for a in range(0,dicjson["Qopc"]):
-                    re_form2=request.form['opcao{}'.format(a)]
+                    re_form2=request.form['opcao{}_{}'.format(i,a)]
                     cri.write('<label class="container">{}<input type="radio" name="{}" value="{}" required><span class="checkmark"/></label> \n  '.format(re_form2,re_form,a))
                 cri.write('\n')
 

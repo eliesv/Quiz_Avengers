@@ -3,22 +3,22 @@
 <form name="send-form" class="send-form" method="POST" action="/criar2">
 
 <input type="text" name="pergunta0" placeholder="Pergunta 0" required/><br> 
-<input type="text" name="opcao0" placeholder="Opcao 0" required/>
-  <input type="text" name="resposta0" placeholder="Resposta 0" required/><br> 
-  <input type="text" name="opcao1" placeholder="Opcao 1" required/>
-  <input type="text" name="resposta1" placeholder="Resposta 1" required/><br> 
+<input type="text" name="opcao0_0" placeholder="Opcao 0_0" required/>
+  <input type="text" name="resposta0_0" placeholder="Resposta 0_0" required/><br> 
+  <input type="text" name="opcao0_1" placeholder="Opcao 0_1" required/>
+  <input type="text" name="resposta0_1" placeholder="Resposta 0_1" required/><br> 
   <br>
 <input type="text" name="pergunta1" placeholder="Pergunta 1" required/><br> 
-<input type="text" name="opcao0" placeholder="Opcao 0" required/>
-  <input type="text" name="resposta0" placeholder="Resposta 0" required/><br> 
-  <input type="text" name="opcao1" placeholder="Opcao 1" required/>
-  <input type="text" name="resposta1" placeholder="Resposta 1" required/><br> 
+<input type="text" name="opcao1_0" placeholder="Opcao 1_0" required/>
+  <input type="text" name="resposta1_0" placeholder="Resposta 1_0" required/><br> 
+  <input type="text" name="opcao1_1" placeholder="Opcao 1_1" required/>
+  <input type="text" name="resposta1_1" placeholder="Resposta 1_1" required/><br> 
   <br>
 <input type="text" name="pergunta2" placeholder="Pergunta 2" required/><br> 
-<input type="text" name="opcao0" placeholder="Opcao 0" required/>
-  <input type="text" name="resposta0" placeholder="Resposta 0" required/><br> 
-  <input type="text" name="opcao1" placeholder="Opcao 1" required/>
-  <input type="text" name="resposta1" placeholder="Resposta 1" required/><br> 
+<input type="text" name="opcao2_0" placeholder="Opcao 2_0" required/>
+  <input type="text" name="resposta2_0" placeholder="Resposta 2_0" required/><br> 
+  <input type="text" name="opcao2_1" placeholder="Opcao 2_1" required/>
+  <input type="text" name="resposta2_1" placeholder="Resposta 2_1" required/><br> 
   <br>
 <button class="a" type="submit">OK</button> 
 </form></body></html>
