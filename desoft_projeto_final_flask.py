@@ -151,12 +151,39 @@ def criar():
         Qperg=int(request.form['perguntas'])
         Qopc=int(request.form['opcoes'])
         with open('criar.txt','w') as cr:
+            cr.write('<html> <head><link rel="stylesheet" type="text/css" href="style/style.css"><link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet"></head>\n')
+            cr.write('<center><br><body bgcolor="#091C4B"><center><font color="white"><h1>Criar meu Quiz</h1>\n')
+            cr.write('<form name="send-form" class="send-form" method="POST" action="/criar2">\n')
+            cr.write('\n')
             for i in range(0,Qperg):
-                cr.write('<label>{}<font color="white"> </label><br><br> \n'.format(i))
-                for i in range(0,Qopc):
-                    cr.write('<label class="container">{}<input type="radio" name="" value="{}" required><span class="checkmark"/></label> \n  '.format(i,i))
-                cr.write('\n')
-    return redirect("/")
+                cr.write('<input type="text" name="pergunta{}" placeholder="Pergunta {}" required/><br> \n'.format(i,i))
+                for a in range(0,Qopc):
+                    cr.write('<input type="text" name="opcao{}" placeholder="Opcao {}" required/><br> \n  '.format(a,a))
+                cr.write('<br>\n')
+            cr.write('<button class="a" type="submit">OK</button></form></body></html>')
+            # for i in range(0,Qperg):
+            #     cr.write('<label>{}<font color="white"> </label><br><br> \n'.format(i))
+            #     for i in range(0,Qopc):
+            #         cr.write('<label class="container">{}<input type="radio" name="" value="{}" required><span class="checkmark"/></label> \n  '.format(i,i))
+            #     cr.write('\n')
+        pathHTML=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/templates/criar2.html")
+        contents = open("criar.txt","r")
+        with open(pathHTML, "w") as e:
+            for lines in contents.readlines():
+                e.write(lines)
+    return redirect("/criar2")
+
+@app.route("/criar2", methods=['POST','GET'])
+def criar2():
+    if request.method == "GET":
+        return render_template("criar2.html")
+    if request.method == "POST":
+            # for i in range(0,Qperg):
+            #     cr.write('<label>{}<font color="white"> </label><br><br> \n'.format(i))
+            #     for i in range(0,Qopc):
+            #         cr.write('<label class="container">{}<input type="radio" name="" value="{}" required><span class="checkmark"/></label> \n  '.format(i,i))
+            #     cr.write('\n')
+            return redirect("/")
 
 
 @app.route("/thanos", methods=['GET'])
