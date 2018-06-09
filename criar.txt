@@ -1,0 +1,20 @@
+<label>0<font color="white"> </label><br><br> 
+<label class="container">0<input type="radio" name="" value="0" required><span class="checkmark"/></label> 
+  <label class="container">1<input type="radio" name="" value="1" required><span class="checkmark"/></label> 
+  
+<label>1<font color="white"> </label><br><br> 
+<label class="container">0<input type="radio" name="" value="0" required><span class="checkmark"/></label> 
+  <label class="container">1<input type="radio" name="" value="1" required><span class="checkmark"/></label> 
+  
+<label>2<font color="white"> </label><br><br> 
+<label class="container">0<input type="radio" name="" value="0" required><span class="checkmark"/></label> 
+  <label class="container">1<input type="radio" name="" value="1" required><span class="checkmark"/></label> 
+  
+<label>3<font color="white"> </label><br><br> 
+<label class="container">0<input type="radio" name="" value="0" required><span class="checkmark"/></label> 
+  <label class="container">1<input type="radio" name="" value="1" required><span class="checkmark"/></label> 
+  
+<label>4<font color="white"> </label><br><br> 
+<label class="container">0<input type="radio" name="" value="0" required><span class="checkmark"/></label> 
+  <label class="container">1<input type="radio" name="" value="1" required><span class="checkmark"/></label> 
+  

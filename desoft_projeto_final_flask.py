@@ -139,6 +139,23 @@ def sent():
     # if request.method == "POST":
     #     return render_template('emailsent.html')
 
+@app.route("/criar", methods=['POST','GET'])
+def criar():
+    if request.method == "GET":
+        return render_template("criar.html")
+
+    if request.method == "POST":
+        Qperg=int(request.form['perguntas'])
+        Qopc=int(request.form['opcoes'])
+        with open('criar.txt','w') as cr:
+            for i in range(0,Qperg):
+                cr.write('<label>{}<font color="white"> </label><br><br> \n'.format(i))
+                for i in range(0,Qopc):
+                    cr.write('<label class="container">{}<input type="radio" name="" value="{}" required><span class="checkmark"/></label> \n  '.format(i,i))
+                cr.write('\n')
+    return redirect("/")
+
+
 @app.route("/thanos", methods=['GET'])
 def thanos():
     return render_template('thanos.html')
