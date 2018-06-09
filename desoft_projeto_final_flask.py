@@ -55,10 +55,8 @@ def quiz():
         print(dicionario)
         print(vencedor)
 
-        dicjson = {}
         dicjson["nome"] = request.form["nome"]
         dicjson["vencedor"] = vencedor
-        dicjson["contador"] = 0
         dicjson["Qperg"]=0
         dicjson["Qopc"]=0
         with open('variaveis.json','w') as variaveis:
@@ -161,7 +159,7 @@ def criar():
 
         with open('criar.txt','w') as cr:
             cr.write('<html> <head><link rel="stylesheet" type="text/css" href="style/style.css"><link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet"></head>\n')
-            cr.write('<center><br><body bgcolor="#091C4B"><center><font color="white"><h1>Criar meu Quiz</h1>\n')
+            cr.write('<center><br><body bgcolor="#091C4B"><font color="white"><h1>Criar meu Quiz</h1>\n')
             cr.write('<form name="send-form" class="send-form" method="POST" action="/criar2">\n')
             cr.write('\n')
             for i in range(0,dicjson["Qperg"]):
@@ -180,8 +178,8 @@ def criar():
         pathHTML=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/templates/criar2.html")
         contents = open("criar.txt","r")
         with open(pathHTML, "w") as e:
-            for lines in contents.readlines():
-                e.write(lines)
+            for line in contents.readlines():
+                e.write(line)
     return redirect("/criar2")
 
 @app.route("/criar2", methods=['POST','GET'])
@@ -209,24 +207,31 @@ def criar2():
 
         with open('Quizfinal.txt','w') as cri:
             cri.write('<html> <head><link rel="stylesheet" type="text/css" href="style/style.css"><link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet"></head>\n')
-            cri.write('<center><br><body bgcolor="#091C4B"><center><font color="white"><h1>Quiz</h1>\n')
+            cri.write('<center><br><body bgcolor="#091C4B"><font color="white"><h1>Quiz</h1>\n')
+            cri.write('<form name="send-form" class="send-form" method="POST" action="/seuquiz">')
             for i in range(0,dicjson["Qperg"]):
                 re_form=request.form['pergunta{}'.format(i)]
                 cri.write('<label><font color="white">{}</label><br><br> \n'.format(re_form))
                 for a in range(0,dicjson["Qopc"]):
                     re_form2=request.form['opcao{}_{}'.format(i,a)]
                     cri.write('<label class="container">{}<input type="radio" name="{}" value="{}" required><span class="checkmark"/></label><br> \n  '.format(re_form2,re_form,a))
-                cri.write('\n')
-                cri.write('</body>')
-                cri.write('</html>')
-        pathHTMLFinal=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/QuizFinal.html")
+                    cri.write('<br>\n')
+            cri.write('<button class="a" type="sumbit">OK</button></form>')
+            cri.write('</body>')
+            cri.write('</html>')
+
+        pathHTMLFinal=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/templates/QuizFinal.html")
         contents = open("Quizfinal.txt","r")
         with open(pathHTMLFinal, "w") as e:
             for lines in contents.readlines():
                 e.write(lines)
 
+        return redirect("/seuquiz")
 
-        return redirect("/")
+@app.route("/seuquiz", methods=["GET","POST"])
+def seuquiz():
+    if request.method == "POST":
+        return render_template("QuizFinal.html")
 
 
 @app.route("/thanos", methods=['GET'])
