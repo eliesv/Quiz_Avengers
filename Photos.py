@@ -6,14 +6,13 @@ import cv2
 import os
 import json
 
-#def overlay():
 
 with open('variaveis.json','r') as variaveis:
     dicjson = json.loads(variaveis.read())
     vingador = dicjson["vencedor"]
 
     cascadePath = os.path.join(os.path.expanduser("~"), "Downloads/opencv/sources/data/haarcascades/haarcascade_frontalface_default.xml")
-    vingadorPath = os.path.join(os.path.expanduser("~"), 'Documents/GitHub/Quiz_Avengers/photos\{}.png'.format(vingador)
+    vingadorPath = os.path.join(os.path.expanduser("~"), 'Documents/GitHub/Quiz_Avengers/photos/{}.png'.format(vingador))
 
     face_cascade = cv2.CascadeClassifier(cascadePath)
     f_image = cv2.imread(vingadorPath, -1)
@@ -33,8 +32,8 @@ with open('variaveis.json','r') as variaveis:
     padding_right = (b_size - f_size) / 2
 
 
-
-    cv_image = cv2.imread('/img/selfie.png')
+    selfiePath = os.path.join(os.path.expanduser("~"), 'Documents/GitHub/Quiz_Avengers/static/img/selfie.png')
+    cv_image = cv2.imread(selfiePath)
 
     faces = face_cascade.detectMultiScale(
                     cv_image,
@@ -59,8 +58,8 @@ with open('variaveis.json','r') as variaveis:
         roi_fg = cv2.bitwise_and(f_image, f_image, mask=f_mask)
         dst = cv2.add(roi_bg, roi_fg)
 
-
-        cv2.imwrite("/img/vingador.png", dst)
+        finalPath = os.path.join(os.path.expanduser("~"), 'Documents/GitHub/Quiz_Avengers/static/img/vingador.png')
+        cv2.imwrite(finalPath, dst)
         cv2.waitKey()
         cv2.destroyAllWindows()
         break

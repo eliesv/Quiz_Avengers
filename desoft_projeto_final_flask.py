@@ -8,7 +8,6 @@ import funcao as f
 import maxkey as m
 import idade as anos
 import img_mail as mail
-#import Photos as p
 import cv2
 import json
 from random import randint
@@ -55,10 +54,13 @@ def quiz():
         print(dicionario)
         print(vencedor)
 
-        dicjson["nome"] = request.form["nome"]
-        dicjson["vencedor"] = vencedor
-        dicjson["Qperg"]=0
-        dicjson["Qopc"]=0
+        with open('variaveis.json','r') as variaveis:
+            dicjson = json.loads(variaveis.read())
+            dicjson["nome"] = request.form["nome"]
+            dicjson["vencedor"] = vencedor
+            dicjson["Qperg"]=0
+            dicjson["Qopc"]=0
+            dicjson["contador"]=dicjson["contador"]
         with open('variaveis.json','w') as variaveis:
             variaveis.write(json.dumps(dicjson))
 
@@ -197,9 +199,12 @@ def criar2():
         for i in range(0,dicjson["Qperg"]):
             for a in range(0,dicjson["Qopc"]):
                 resp=request.form['resposta{}_{}'.format(i,a)]
-                listafinal.append(resp)
-        for i in listafinal:
-            dict_respostas[i]=0
+                lista=resp.split(",")
+                for j in lista:
+                    if j not in listafinal:
+                        listafinal.append(j)
+        for h in listafinal:
+            dict_respostas[h]=0
         with open('Respostas.json','w') as r:
             r.write(json.dumps(dict_respostas))
 
@@ -208,7 +213,7 @@ def criar2():
         with open('Quizfinal.txt','w') as cri:
             cri.write('<html> <head><link rel="stylesheet" type="text/css" href="style/style.css"><link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet"></head>\n')
             cri.write('<center><br><body bgcolor="#091C4B"><font color="white"><h1>Quiz</h1>\n')
-            cri.write('<form name="send-form" class="send-form" method="POST" action="/seuquiz">')
+            cri.write('<form name="send-form" class="send-form" method="GET" action="/seuquiz">')
             for i in range(0,dicjson["Qperg"]):
                 re_form=request.form['pergunta{}'.format(i)]
                 cri.write('<label><font color="white">{}</label><br><br> \n'.format(re_form))
@@ -216,7 +221,7 @@ def criar2():
                     re_form2=request.form['opcao{}_{}'.format(i,a)]
                     cri.write('<label class="container">{}<input type="radio" name="{}" value="{}" required><span class="checkmark"/></label><br> \n  '.format(re_form2,re_form,a))
                     cri.write('<br>\n')
-            cri.write('<button class="a" type="sumbit">OK</button></form>')
+            #cri.write('<button class="a" type="sumbit">OK</button></form>')
             cri.write('</body>')
             cri.write('</html>')
 
@@ -230,7 +235,7 @@ def criar2():
 
 @app.route("/seuquiz", methods=["GET","POST"])
 def seuquiz():
-    if request.method == "POST":
+    if request.method == "GET":
         return render_template("QuizFinal.html")
 
 

@@ -1,13 +1,13 @@
 <html> <head><link rel="stylesheet" type="text/css" href="style/style.css"><link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet"></head>
 <center><br><body bgcolor="#091C4B"><font color="white"><h1>Quiz</h1>
-<form name="send-form" class="send-form" method="POST" action="/seuquiz"><label><font color="white">jkdfnvjncjd</label><br><br> 
-<label class="container">1<input type="radio" name="jkdfnvjncjd" value="0" required><span class="checkmark"/></label><br> 
+<form name="send-form" class="send-form" method="GET" action="/seuquiz"><label><font color="white">Isso funciona?</label><br><br> 
+<label class="container">ss<input type="radio" name="Isso funciona?" value="0" required><span class="checkmark"/></label><br> 
   <br>
-<label class="container">2<input type="radio" name="jkdfnvjncjd" value="1" required><span class="checkmark"/></label><br> 
+<label class="container">nn<input type="radio" name="Isso funciona?" value="1" required><span class="checkmark"/></label><br> 
   <br>
-<label><font color="white">njecnlknorexic</label><br><br> 
-<label class="container">1<input type="radio" name="njecnlknorexic" value="0" required><span class="checkmark"/></label><br> 
+<label><font color="white">Se funcionar vai ser fudido?</label><br><br> 
+<label class="container">ss<input type="radio" name="Se funcionar vai ser fudido?" value="0" required><span class="checkmark"/></label><br> 
   <br>
-<label class="container">1<input type="radio" name="njecnlknorexic" value="1" required><span class="checkmark"/></label><br> 
+<label class="container">nn<input type="radio" name="Se funcionar vai ser fudido?" value="1" required><span class="checkmark"/></label><br> 
   <br>
-<button class="a" type="sumbit">OK</button></form></body></html>
+</body></html>
