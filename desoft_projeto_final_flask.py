@@ -230,6 +230,11 @@ def criar2():
         with open(pathHTMLFinal, "w") as e:
             for lines in contents.readlines():
                 e.write(lines)
+        pathHTMLFinal=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/quiz/QuizFinal.html")
+        contents = open("{}Quizfinal.txt".format(pathquiz),"r")
+        with open(pathHTMLFinal, "w") as e:
+            for lines in contents.readlines():
+                e.write(lines)
 
 
         with open('{}funcao.txt'.format(pathquiz),'w') as f:
