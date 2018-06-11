@@ -7,9 +7,20 @@ def multiplaescolha(pergunta):
 			lista=['a']
 		if x==1:
 			lista=['b']
+		if x==2:
+			lista=['r']
 	if pergunta=="Se funcionar vai ser fudido?": 
 		if x==0:
 			lista=['c']
 		if x==1:
 			lista=['d', 'e']
+		if x==2:
+			lista=['tt']
+	if pergunta=="Qual a chance de funcionar de primeira?": 
+		if x==0:
+			lista=['e']
+		if x==1:
+			lista=['f']
+		if x==2:
+			lista=['g']
 	return lista 
