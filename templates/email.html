@@ -12,6 +12,7 @@
               margin: 8px 0;
               box-sizing: border-box;
             }
+
         </style>
     </head>
 
@@ -34,10 +35,12 @@
             <div id="botoes">
             <form name="send-form" class="send-form" method="POST" action="/email">
                 <input type="email" name="email" placeholder="Seu email" required>
-                <button class="a" type="submit">Enviar</button>
+                <button id="enviar" class="a" type="submit">Enviar</button>
               </div>
-                <br><br>
+                <br>
+            <img id="loading" src="img/loading.gif" width="75">
             </form>
+
 
 
         </font>
@@ -49,7 +52,10 @@
 var x = document.getElementById("botoes");
 var y = document.getElementById("pode_ser");
 var z = document.getElementById("hoje_nao");
+var l =document.getElementById("loading");
+var e =document.getElementById("enviar");
 x.style.display = "none";
+l.style.display = "none";
 
 poder_ser_btn = document.querySelector('#pode_ser')
 poder_ser_btn.addEventListener("click", function(e){
@@ -58,6 +64,12 @@ poder_ser_btn.addEventListener("click", function(e){
   x.style.display = "block";
   y.style.display = "none";
   z.style.display = "none";
+});
+
+enviar_btn = document.querySelector('#enviar')
+enviar_btn.addEventListener("click", function(e){
+  l.style.display = "block";
+
 });
 
 

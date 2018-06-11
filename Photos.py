@@ -32,7 +32,7 @@ with open('variaveis.json','r') as variaveis:
     padding_right = (b_size - f_size) / 2
 
 
-    selfiePath = os.path.join(os.path.expanduser("~"), 'Documents/GitHub/Quiz_Avengers/static/img/selfie.png')
+    selfiePath = os.path.join(os.path.expanduser("~"), 'Documents/GitHub/Quiz_Avengers/photos/selfie.png')
     cv_image = cv2.imread(selfiePath)
 
     faces = face_cascade.detectMultiScale(
@@ -58,7 +58,7 @@ with open('variaveis.json','r') as variaveis:
         roi_fg = cv2.bitwise_and(f_image, f_image, mask=f_mask)
         dst = cv2.add(roi_bg, roi_fg)
 
-        finalPath = os.path.join(os.path.expanduser("~"), 'Documents/GitHub/Quiz_Avengers/static/img/vingador.png')
+        finalPath = os.path.join(os.path.expanduser("~"), 'Documents/GitHub/Quiz_Avengers/photos/vingador.png')
         cv2.imwrite(finalPath, dst)
         cv2.waitKey()
         cv2.destroyAllWindows()

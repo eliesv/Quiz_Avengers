@@ -3,7 +3,7 @@
 @authors: elies, freddyd, michelh
 """
 
-from flask import Flask, request, render_template, redirect
+from flask import *
 import funcao as f
 import maxkey as m
 import idade as anos
@@ -13,11 +13,13 @@ import json
 from random import randint
 import os
 from shutil import copyfile
-from copy_file import copy_file, copy_file2
+from copy_file import *
 from delete_file import delete_file
 import subprocess
 
 app = Flask(__name__,static_url_path="")
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 5
+
 
 dicionario = {}
 pathquiz=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/quiz/")
@@ -88,12 +90,14 @@ def camera():
 
         pathSelfie=os.path.join(os.path.expanduser("~"), "Downloads/selfie.png")
         if os.path.isfile(pathSelfie):
-            copy_file(contador)
+            copy_file1(contador)
             copy_file2()
-
         dicjson["contador"] += 1
         with open('variaveis.json','w') as variaveis:
             variaveis.write(json.dumps(dicjson))
+
+        pathDelete=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/static/img/vingador.png")
+        delete_file(pathDelete)
 
         subprocess.Popen("Photos.py", shell=True)
         return redirect("/loading")
@@ -106,6 +110,9 @@ def loading():
 def resultado():
 
     if request.method == "GET":
+
+        copy_file3()
+
         with open('variaveis.json','r') as variaveis:
             dicjson = json.loads(variaveis.read())
             vencedor = dicjson["vencedor"]
@@ -129,8 +136,11 @@ def email():
             with open('email.txt', 'r') as bb:
                 emailto = bb.read()
 
-        mail.send(emailto)
-        print(emailto)
+        try:
+            mail.send(emailto)
+            print('making my way downtown')
+        except:
+            print("ERROR")
 
         return redirect("/sent")
 
@@ -141,8 +151,12 @@ def sent():
              emailto = bb.read()
         return render_template("emailsent.html", x = emailto)
 
-    # if request.method == "POST":
-    #     return render_template('emailsent.html')
+@app.route("/thanos", methods=['GET'])
+def thanos():
+    return render_template('thanos.html')
+
+#---------------------------------------------CRIE SEU QUIZ---------------------------------------------------------------
+
 
 @app.route("/criar", methods=['POST','GET'])
 def criar():
@@ -264,8 +278,3 @@ def criar2():
 def seuquiz():
     if request.method == "GET":
         return render_template("QuizFinal.html")
-
-
-@app.route("/thanos", methods=['GET'])
-def thanos():
-    return render_template('thanos.html')

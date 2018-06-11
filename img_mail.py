@@ -18,7 +18,7 @@ def send(emailto):
     msg['Subject'] = "Quiz dos Vingadores"
 
 
-    foto=open(r"static/img/selfie.png", "rb")
+    foto=open(r"static/img/vingador.png", "rb")
     msg.attach(MIMEImage(foto.read()))
     msg.attach(MIMEText("Obrigado por jogar!!! Sua foto:"))
 
