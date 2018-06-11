@@ -95,7 +95,7 @@ def camera():
         with open('variaveis.json','w') as variaveis:
             variaveis.write(json.dumps(dicjson))
 
-        subprocess.Popen("Photos.py 1", shell=True)
+        subprocess.Popen("Photos.py", shell=True)
         return redirect("/loading")
 
 @app.route("/loading", methods=['GET'])
