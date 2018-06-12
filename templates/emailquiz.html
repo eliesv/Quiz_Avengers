@@ -1,0 +1,76 @@
+<html>
+
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="/style/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Marvel' rel='stylesheet'>
+
+        <style>
+            input[type=email] {
+              width: 20%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              box-sizing: border-box;
+            }
+
+        </style>
+    </head>
+
+    <body bgcolor="#6d3678"><center><br><br><br><br><br>
+
+        <font color="white">
+
+
+            <label>Você quer receber sua jogo por email?</label><br><br>
+
+
+            <form name="send-form" class="send-form" method="POST" action="/quizenviado">
+                <button id="hoje_nao" class="a" type="submit">Hoje não</button>
+            </form>
+
+            <form name="send-form" class="send-form">
+                <button id="pode_ser" class="a" type="submit">Pode ser</button>
+            </form>
+
+            <div id="botoes">
+            <form name="send-form" class="send-form" method="POST" action="/emailquiz">
+                <input type="email" name="email" placeholder="Seu email" required>
+                <button id="enviar" class="a" type="submit">Enviar</button>
+              </div>
+                <br>
+            <img id="loading" src="img/loading.gif" width="75">
+            </form>
+
+
+
+        </font>
+
+    </body>
+
+</html>
+<script>
+var x = document.getElementById("botoes");
+var y = document.getElementById("pode_ser");
+var z = document.getElementById("hoje_nao");
+var l =document.getElementById("loading");
+var e =document.getElementById("enviar");
+x.style.display = "none";
+l.style.display = "none";
+
+poder_ser_btn = document.querySelector('#pode_ser')
+poder_ser_btn.addEventListener("click", function(e){
+  // aparece
+  e.preventDefault();
+  x.style.display = "block";
+  y.style.display = "none";
+  z.style.display = "none";
+});
+
+enviar_btn = document.querySelector('#enviar')
+enviar_btn.addEventListener("click", function(e){
+  l.style.display = "block";
+
+});
+
+
+</script>

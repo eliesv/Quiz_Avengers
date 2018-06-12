@@ -4,23 +4,17 @@ def multiplaescolha(pergunta):
 	x = request.form[pergunta] 
 	if pergunta=="Isso funciona?": 
 		if x==0:
-			lista=['a']
+			lista=['s']
 		if x==1:
-			lista=['b']
-		if x==2:
-			lista=['r']
+			lista=['n']
 	if pergunta=="Se funcionar vai ser fudido?": 
 		if x==0:
-			lista=['c']
+			lista=['s']
 		if x==1:
-			lista=['d', 'e']
-		if x==2:
-			lista=['tt']
+			lista=['n']
 	if pergunta=="Qual a chance de funcionar de primeira?": 
 		if x==0:
-			lista=['e']
+			lista=['s']
 		if x==1:
-			lista=['f']
-		if x==2:
-			lista=['g']
+			lista=['n']
 	return lista 

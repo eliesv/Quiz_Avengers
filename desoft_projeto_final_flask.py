@@ -8,6 +8,7 @@ import funcao as f
 import maxkey as m
 import idade as anos
 import img_mail as mail
+import mail2 as mail2
 import cv2
 import json
 from random import randint
@@ -22,7 +23,7 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 5
 
 
 dicionario = {}
-pathquiz=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/quiz/")
+
 @app.route("/")
 def introdução():
     return render_template("intro.html")
@@ -138,7 +139,7 @@ def email():
 
         try:
             mail.send(emailto)
-            print('making my way downtown')
+            print("Enviado")
         except:
             print("ERROR")
 
@@ -156,7 +157,7 @@ def thanos():
     return render_template('thanos.html')
 
 #---------------------------------------------CRIE SEU QUIZ---------------------------------------------------------------
-
+pathquiz=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/quiz/")
 
 @app.route("/criar", methods=['POST','GET'])
 def criar():
@@ -172,7 +173,7 @@ def criar():
             variaveis.write(json.dumps(dicjson))
 
 
-
+        #Cria HTML para Criar quiz a partir do numero de perguntas e opcoes
         with open('{}criar.txt'.format(pathquiz),'w') as cr:
             cr.write('<html> <head><link rel="stylesheet" type="text/css" href="style/style.css"><link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet"></head>\n')
             cr.write('<center><br><body bgcolor="#091C4B"><font color="white"><h1>Criar meu Quiz</h1>\n')
@@ -188,14 +189,12 @@ def criar():
             cr.write('</form>')
             cr.write('</body>')
             cr.write('</html>')
-
-
-
         pathHTML=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/templates/criar2.html")
         contents = open("{}criar.txt".format(pathquiz),"r")
         with open(pathHTML, "w") as e:
             for line in contents.readlines():
                 e.write(line)
+
     return redirect("/criar2")
 
 @app.route("/criar2", methods=['POST','GET'])
@@ -208,26 +207,45 @@ def criar2():
         with open('variaveis.json','r') as variaveis:
             dicjson = json.loads(variaveis.read())
 
-        listafinal=[]
+        #cria um JSON e TXT com as perguntas e respostas
+        listaresp=[]
         dict_respostas={}
         for i in range(0,dicjson["Qperg"]):
             for a in range(0,dicjson["Qopc"]):
                 resp=request.form['resposta{}_{}'.format(i,a)]
                 lista=resp.split(",")
                 for j in lista:
-                    if j not in listafinal:
-                        listafinal.append(j)
-        for h in listafinal:
+                    if j not in listaresp:
+                        listaresp.append(j)
+        for h in listaresp:
             dict_respostas[h]=0
         with open('{}Respostas.json'.format(pathquiz),'w') as r:
             r.write(json.dumps(dict_respostas))
 
+        listaperguntas=[]
+        for i in range(0,dicjson["Qperg"]):
+                resp=request.form['pergunta{}'.format(i)]
+                lista=resp.split(",")
+                for j in lista:
+                    if j not in listaperguntas:
+                        listaperguntas.append(j)
 
+        with open('{}Perguntas.txt'.format(pathquiz),'w') as r:
+            for i in range(0,len(listaperguntas)):
+                if i < len(listaperguntas)-1:
+                    r.write('"')
+                    r.write("{}".format(listaperguntas[i]))
+                    r.write('",')
+                else:
+                    r.write('"')
+                    r.write("{}".format(listaperguntas[len(listaperguntas)-1]))
+                    r.write('"')
 
+        #cria o HTML do quiz final
         with open('{}Quizfinal.txt'.format(pathquiz),'w') as cri:
-            cri.write('<html> <head><link rel="stylesheet" type="text/css" href="style/style.css"><link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet"></head>\n')
+            cri.write('<html>\n')
             cri.write('<center><br><body bgcolor="#091C4B"><font color="white"><h1>Quiz</h1>\n')
-            cri.write('<form name="send-form" class="send-form" method="GET" action="/seuquiz">')
+            cri.write('<form name="send-form" class="send-form" method="POST" action="/quiz">\n')
             for i in range(0,dicjson["Qperg"]):
                 re_form=request.form['pergunta{}'.format(i)]
                 cri.write('<label><font color="white">{}</label><br><br> \n'.format(re_form))
@@ -235,23 +253,33 @@ def criar2():
                     re_form2=request.form['opcao{}_{}'.format(i,a)]
                     cri.write('<label class="container">{}<input type="radio" name="{}" value="{}" required><span class="checkmark"/></label><br> \n  '.format(re_form2,re_form,a))
                     cri.write('<br>\n')
-            cri.write('<button class="a" type="sumbit">OK</button></form>')
-            cri.write('</body>')
-            cri.write('</html>')
+            cri.write('<button class="a" type="sumbit">OK</button></form>\n')
+            cri.write('</body>\n')
+            cri.write('</html>\n')
 
-        pathHTMLFinal=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/templates/QuizFinal.html")
-        contents = open("{}Quizfinal.txt".format(pathquiz),"r")
-        with open(pathHTMLFinal, "w") as e:
-            for lines in contents.readlines():
-                e.write(lines)
-        pathHTMLFinal=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/quiz/QuizFinal.html")
+        pathHTMLFinal=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/quiz/templates/QuizFinal.html")
         contents = open("{}Quizfinal.txt".format(pathquiz),"r")
         with open(pathHTMLFinal, "w") as e:
             for lines in contents.readlines():
                 e.write(lines)
 
+        #cria o HTML dos resultados do quiz final
+        with open('{}Resultado.txt'.format(pathquiz),'w') as cri:
+            cri.write('<html> \n')
+            cri.write('<center><br><body bgcolor="#091C4B"><form name="send-form" class="send-form" method="POST" action="/resultado"><font color="white"><h1>Resultado:</h1>\n')
+            cri.write('{{vencedor}} \n')
+            cri.write('<button class="a" type="sumbit">OK</button></form>\n')
+            cri.write('</body>\n')
+            cri.write('</html>\n')
 
-        with open('{}funcao.txt'.format(pathquiz),'w') as f:
+        pathHTMLFinal=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/quiz/templates/Resultado.html")
+        contents = open("{}Resultado.txt".format(pathquiz),"r")
+        with open(pathHTMLFinal, "w") as e:
+            for lines in contents.readlines():
+                e.write(lines)
+
+        #cria a funcao para rodar o quiz no flask
+        with open('{}funcaoquiz.txt'.format(pathquiz),'w') as f:
             f.write("from flask import request\n")
             f.write("def multiplaescolha(pergunta):\n")
             f.write("\tlista=[] \n")
@@ -265,16 +293,35 @@ def criar2():
                     lista=re_form3.split(",")
                     f.write('\t\t\tlista={}\n'.format(lista))
             f.write("\treturn lista \n")
+        subprocess.Popen("Copyfuncao.py", shell=True)
 
-            pathfuncaoFinal=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/quiz/funcao.py")
-            contents = open("{}funcao.txt".format(pathquiz),"r")
-            with open(pathfuncaoFinal, "w") as e:
-                for lines in contents.readlines():
-                    e.write(lines)
 
-        return redirect("/seuquiz")
 
-@app.route("/seuquiz", methods=["GET","POST"])
-def seuquiz():
-    if request.method == "GET":
-        return render_template("QuizFinal.html")
+
+
+        return redirect("/")
+
+# @app.route("/emailquiz", methods=["GET","POST"])
+# def emailquiz():
+#     if request.method == "GET":
+#         return render_template("emailquiz.html")
+#     if request.method == "POST":
+#         if request.form['email'] != '':
+#             emailto = request.form['email']
+#         else:
+#             with open('email.txt', 'r') as bb:
+#                 emailto = bb.read()
+#         try:
+#             mail2.send(emailto)
+#             print("Enviado")
+#         except:
+#             print("ERROR")
+#         return redirect("/quizenviado")
+#
+# @app.route("/quizenviado", methods=["GET","POST"])
+# def quizenviado():
+#     if request.method == "GET":
+#         y=requst.form['email']
+#         return render_template("quizenviado.html", x=y)
+#     if request.method == "POST":
+#         return redirect("/")
