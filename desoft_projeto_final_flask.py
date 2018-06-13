@@ -55,8 +55,8 @@ def quiz():
 
         vencedor = m.maxkey(dicionario)
 
-        if request.form["nome"] == "insper" or request.form["nome"] == "Insper":
-            vencedor = "Insper"
+        # if request.form["nome"] == "insper" or request.form["nome"] == "Insper":
+        #     vencedor = "Insper"
 
         with open('variaveis.json','r') as variaveis:
             dicjson = json.loads(variaveis.read())
@@ -236,10 +236,12 @@ def criar2():
                     r.write("{}".format(listaperguntas[len(listaperguntas)-1]))
 
         #cria o HTML do quiz final
+        titulo = request.form["titulo"]
+
         with open('{}/templates/Quizfinal.html'.format(pathquiz),'w') as cri:
             cri.write('<html>\n')
             cri.write('<head><link rel="stylesheet" type="text/css" href="/style/stylequiz.css"></head>\n')
-            cri.write('<body bgcolor="#091C4B"><font color="white" size="6"><center><h1>Quiz</h1></center>\n')
+            cri.write('<body bgcolor="#091C4B"><font color="white" size="6"><center><h1>{}</h1><h3>Faça o quiz para descobrir!</h3></center>\n'.format(titulo))
             cri.write('<form name="send-form" class="send-form" method="POST" action="/quiz">\n')
             for i in range(0,dicjson["Qperg"]):
                 re_form=request.form['pergunta{}'.format(i)]
