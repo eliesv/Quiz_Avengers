@@ -54,8 +54,9 @@ def quiz():
                 dicionario[a] += 1
 
         vencedor = m.maxkey(dicionario)
-        print(dicionario)
-        print(vencedor)
+
+        if request.form["nome"] == "insper" or request.form["nome"] == "Insper":
+            vencedor = "Insper"
 
         with open('variaveis.json','r') as variaveis:
             dicjson = json.loads(variaveis.read())
