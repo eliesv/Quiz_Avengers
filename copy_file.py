@@ -34,3 +34,14 @@ def copy_file3():
     copyfile(source_file, destination_file)
     print("{} copied to {}".format(source_file, destination_file))
     return None
+
+def copy_file_mor(src,dst):
+        pathSelfie=src
+        source_file = pathSelfie
+
+        pathSelfieDest=dst
+        destination_file = pathSelfieDest
+
+        copyfile(source_file, destination_file)
+        print("{} copied to {}".format(source_file, destination_file))
+        return None

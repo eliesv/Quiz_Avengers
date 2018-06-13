@@ -1,24 +1,18 @@
-<html> <head><link rel="stylesheet" type="text/css" href="style/style.css"><link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet"></head>
-<center><br><body bgcolor="#091C4B"><font color="white"><h1>Criar meu Quiz</h1>
+<html><head><link rel="stylesheet" type="text/css" href="style/style.css"><link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet"><style>input[type=text] {width: 20%;padding: 12px 20px;margin: 8px 0;box-sizing: border-box;}</style></head>
+<center><br><body bgcolor="#091C4B"><font color="white"><h1>Criar meu Quiz</h1><br>Escreva as perguntas, suas opcoes e qual(is) resultados serao afetados por cada opcao.<br> Cada opcao da um ponto para cada resultado escolhido.<br> Para pontuar mais de um resultado por opcao, separe-os por virgulas.<br> Tome cuidado para escrever o mesmo resutado sempre exatamente da mesma forma!<br>Nao use caracteres como ce cedilha ou acentos!<br><br>
 <form name="send-form" class="send-form" method="POST" action="/criar2">
 
-<input type="text" name="pergunta0" placeholder="Pergunta 0" required/><br> 
+<input type="text" name="pergunta0" placeholder="Pergunta 0" required/><br>
 <input type="text" name="opcao0_0" placeholder="Opcao 0_0" required/>
-  <input type="text" name="resposta0_0" placeholder="Resposta 0_0" required/><br> 
+  <input type="text" name="resposta0_0" placeholder="Resposta 0_0" required/><br>
   <input type="text" name="opcao0_1" placeholder="Opcao 0_1" required/>
-  <input type="text" name="resposta0_1" placeholder="Resposta 0_1" required/><br> 
+  <input type="text" name="resposta0_1" placeholder="Resposta 0_1" required/><br>
   <br>
-<input type="text" name="pergunta1" placeholder="Pergunta 1" required/><br> 
+<input type="text" name="pergunta1" placeholder="Pergunta 1" required/><br>
 <input type="text" name="opcao1_0" placeholder="Opcao 1_0" required/>
-  <input type="text" name="resposta1_0" placeholder="Resposta 1_0" required/><br> 
+  <input type="text" name="resposta1_0" placeholder="Resposta 1_0" required/><br>
   <input type="text" name="opcao1_1" placeholder="Opcao 1_1" required/>
-  <input type="text" name="resposta1_1" placeholder="Resposta 1_1" required/><br> 
+  <input type="text" name="resposta1_1" placeholder="Resposta 1_1" required/><br>
   <br>
-<input type="text" name="pergunta2" placeholder="Pergunta 2" required/><br> 
-<input type="text" name="opcao2_0" placeholder="Opcao 2_0" required/>
-  <input type="text" name="resposta2_0" placeholder="Resposta 2_0" required/><br> 
-  <input type="text" name="opcao2_1" placeholder="Opcao 2_1" required/>
-  <input type="text" name="resposta2_1" placeholder="Resposta 2_1" required/><br> 
-  <br>
-<button class="a" type="submit">OK</button> 
+<button class="a" type="submit">OK</button>
 </form></body></html>

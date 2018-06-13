@@ -1,5 +1,5 @@
 from flask import *
-from funcaoquiz import *
+import funcaoquiz
 from maxkey import *
 
 app = Flask(__name__,static_url_path="")
@@ -25,26 +25,30 @@ def inicial():
         with open("Perguntas.txt", "r") as r:
             perguntas=r.read()
             lista_pergs = perguntas.split(",")
+
         print(lista_pergs)
 
-        for i in lista_pergs:
-            lista_resps = multiplaescolha(i)
+        for pergunta in lista_pergs:
+            print(pergunta)
+            print(request.form[pergunta])
+            lista_resps = funcaoquiz.multiplaescolha(pergunta)
+            print(lista_resps)
             for e in lista_resps:
                 dicfinal[e] += 1
+
         print(dicfinal)
         vencedor = maxkey(dicfinal)
         print(vencedor)
-        # with open('vencedor.txt','w') as v:
-        #     v.write(vencedor)
+        with open('vencedor.txt','w') as v:
+            v.write(vencedor)
 
         return redirect("/resultado")
 
-@app.route("/resultado", methods=["GET", "POST"])
-def resultado():
-  if request.method == "GET":
-      # with open('vencedor.txt','r') as v:
-      #     vencedor = v.read()
-      return render_template("Resultado.html", vencedor = "1")
-
-  if request.method == "POST":
-      return redirect("/")
+@app.route("/resultado", methods=["GET","POST"])
+def quizresultado():
+    if request.method == "GET":
+        with open('vencedor.txt','r') as v:
+            vencedor = v.read()
+        return render_template("Resultado.html", vencedor = vencedor)
+    if request.method == "POST":
+        return redirect("/")

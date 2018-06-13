@@ -157,7 +157,8 @@ def thanos():
     return render_template('thanos.html')
 
 #---------------------------------------------CRIE SEU QUIZ---------------------------------------------------------------
-pathquiz=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/quiz/")
+pathquiz      = os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/quiz/")
+pathtemplates = os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/templates/")
 
 @app.route("/criar", methods=['POST','GET'])
 def criar():
@@ -174,26 +175,19 @@ def criar():
 
 
         #Cria HTML para Criar quiz a partir do numero de perguntas e opcoes
-        with open('{}criar.txt'.format(pathquiz),'w') as cr:
-            cr.write('<html> <head><link rel="stylesheet" type="text/css" href="style/style.css"><link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet"></head>\n')
-            cr.write('<center><br><body bgcolor="#091C4B"><font color="white"><h1>Criar meu Quiz</h1>\n')
+        with open('{}criar2.html'.format(pathtemplates),'w') as cr:
+            cr.write('<html><head><link rel="stylesheet" type="text/css" href="style/style.css"><link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet"><style>input[type=text] {width: 20%;padding: 12px 20px;margin: 8px 0;box-sizing: border-box;}</style></head>\n')
+            cr.write('<center><br><body bgcolor="#091C4B"><font color="white"><h1>Criar meu Quiz</h1><br>Escreva as perguntas, suas opcoes e qual(is) resultados serao afetados por cada opcao.<br> Cada opcao da um ponto para cada resultado escolhido.<br> Para pontuar mais de um resultado por opcao, separe-os por virgulas.<br> Tome cuidado para escrever o mesmo resutado sempre exatamente da mesma forma!<br>Não use caracteres como ce cedilha ou acentos!<br><br>\n')
             cr.write('<form name="send-form" class="send-form" method="POST" action="/criar2">\n')
             cr.write('\n')
             for i in range(0,dicjson["Qperg"]):
-                cr.write('<input type="text" name="pergunta{}" placeholder="Pergunta {}" required/><br> \n'.format(i,i))
+                cr.write('<input type="text" name="pergunta{}" placeholder="Pergunta {}" required/><br>\n'.format(i,i))
                 for a in range(0,dicjson["Qopc"]):
                     cr.write('<input type="text" name="opcao{}_{}" placeholder="Opcao {}_{}" required/>\n  '.format(i,a,i,a))
-                    cr.write('<input type="text" name="resposta{}_{}" placeholder="Resposta {}_{}" required/><br> \n  '.format(i,a,i,a))
+                    cr.write('<input type="text" name="resposta{}_{}" placeholder="Resposta {}_{}" required/><br>\n  '.format(i,a,i,a))
                 cr.write('<br>\n')
             cr.write('<button class="a" type="submit">OK</button> \n')
-            cr.write('</form>')
-            cr.write('</body>')
-            cr.write('</html>')
-        pathHTML=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/templates/criar2.html")
-        contents = open("{}criar.txt".format(pathquiz),"r")
-        with open(pathHTML, "w") as e:
-            for line in contents.readlines():
-                e.write(line)
+            cr.write('</form></body></html>')
 
     return redirect("/criar2")
 
@@ -233,18 +227,16 @@ def criar2():
         with open('{}Perguntas.txt'.format(pathquiz),'w') as r:
             for i in range(0,len(listaperguntas)):
                 if i < len(listaperguntas)-1:
-                    r.write('"')
                     r.write("{}".format(listaperguntas[i]))
-                    r.write('",')
+                    r.write(',')
                 else:
-                    r.write('"')
                     r.write("{}".format(listaperguntas[len(listaperguntas)-1]))
-                    r.write('"')
 
         #cria o HTML do quiz final
-        with open('{}Quizfinal.txt'.format(pathquiz),'w') as cri:
+        with open('{}/templates/Quizfinal.html'.format(pathquiz),'w') as cri:
             cri.write('<html>\n')
-            cri.write('<center><br><body bgcolor="#091C4B"><font color="white"><h1>Quiz</h1>\n')
+            cri.write('<head><link rel="stylesheet" type="text/css" href="/style/stylequiz.css"></head>\n')
+            cri.write('<body bgcolor="#091C4B"><font color="white" size="6"><h1>Quiz</h1>\n')
             cri.write('<form name="send-form" class="send-form" method="POST" action="/quiz">\n')
             for i in range(0,dicjson["Qperg"]):
                 re_form=request.form['pergunta{}'.format(i)]
@@ -252,38 +244,16 @@ def criar2():
                 for a in range(0,dicjson["Qopc"]):
                     re_form2=request.form['opcao{}_{}'.format(i,a)]
                     cri.write('<label class="container">{}<input type="radio" name="{}" value="{}" required><span class="checkmark"/></label><br> \n  '.format(re_form2,re_form,a))
-                    cri.write('<br>\n')
             cri.write('<button class="a" type="sumbit">OK</button></form>\n')
             cri.write('</body>\n')
             cri.write('</html>\n')
-
-        pathHTMLFinal=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/quiz/templates/QuizFinal.html")
-        contents = open("{}Quizfinal.txt".format(pathquiz),"r")
-        with open(pathHTMLFinal, "w") as e:
-            for lines in contents.readlines():
-                e.write(lines)
-
-        #cria o HTML dos resultados do quiz final
-        with open('{}Resultado.txt'.format(pathquiz),'w') as cri:
-            cri.write('<html> \n')
-            cri.write('<center><br><body bgcolor="#091C4B"><form name="send-form" class="send-form" method="POST" action="/resultado"><font color="white"><h1>Resultado:</h1>\n')
-            cri.write('{{vencedor}} \n')
-            cri.write('<button class="a" type="sumbit">OK</button></form>\n')
-            cri.write('</body>\n')
-            cri.write('</html>\n')
-
-        pathHTMLFinal=os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/quiz/templates/Resultado.html")
-        contents = open("{}Resultado.txt".format(pathquiz),"r")
-        with open(pathHTMLFinal, "w") as e:
-            for lines in contents.readlines():
-                e.write(lines)
 
         #cria a funcao para rodar o quiz no flask
         with open('{}funcaoquiz.txt'.format(pathquiz),'w') as f:
             f.write("from flask import request\n")
             f.write("def multiplaescolha(pergunta):\n")
-            f.write("\tlista=[] \n")
-            f.write("\tx = request.form[pergunta] \n")
+            f.write("\tlista=[]\n")
+            f.write("\tx = request.form[pergunta]\n")
             for i in range(0,dicjson["Qperg"]):
                 re_form=request.form['pergunta{}'.format(i)]
                 f.write('\tif pergunta=="{}": \n'.format(re_form))
@@ -292,12 +262,8 @@ def criar2():
                     re_form3=request.form['resposta{}_{}'.format(i,a)]
                     lista=re_form3.split(",")
                     f.write('\t\t\tlista={}\n'.format(lista))
-            f.write("\treturn lista \n")
+            f.write("\treturn lista\n")
         subprocess.Popen("Copyfuncao.py", shell=True)
-
-
-
-
 
         return redirect("/")
 

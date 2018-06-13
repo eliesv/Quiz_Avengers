@@ -1,20 +1,15 @@
 from flask import request
 def multiplaescolha(pergunta):
-	lista=[] 
-	x = request.form[pergunta] 
-	if pergunta=="Isso funciona?": 
+	lista=[]
+	x = request.form[pergunta]
+	if pergunta=='perg1':
 		if x==0:
-			lista=['s']
+			lista=['a']
 		if x==1:
-			lista=['n']
-	if pergunta=="Se funcionar vai ser fudido?": 
+			lista=['b']
+	if pergunta=='perg2':
 		if x==0:
-			lista=['s']
+			lista=['a']
 		if x==1:
-			lista=['n']
-	if pergunta=="Qual a chance de funcionar de primeira?": 
-		if x==0:
-			lista=['s']
-		if x==1:
-			lista=['n']
-	return lista 
+			lista=['b']
+	return lista
