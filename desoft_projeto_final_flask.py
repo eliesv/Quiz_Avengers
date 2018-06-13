@@ -248,6 +248,22 @@ def criar2():
             cri.write('</body>\n')
             cri.write('</html>\n')
 
+        #cria o HTML do preview
+        with open('{}preview.html'.format(pathtemplates),'w') as cri:
+            cri.write('<html>\n')
+            cri.write('<head><link rel="stylesheet" type="text/css" href="/style/stylequiz.css"></head>\n')
+            cri.write('<body bgcolor="#091C4B"><font color="white" size="6"><h1>Preview do seu quiz</h1>\n')
+            for i in range(0,dicjson["Qperg"]):
+                re_form=request.form['pergunta{}'.format(i)]
+                cri.write('<label><font color="white">{}</label><br><br> \n'.format(re_form))
+                for a in range(0,dicjson["Qopc"]):
+                    re_form2=request.form['opcao{}_{}'.format(i,a)]
+                    cri.write('<label class="container">{}<input type="radio" name="{}" required><span class="checkmark"/></label><br> \n  '.format(re_form2,re_form))
+            cri.write('<form name="send-form" class="send-form" action="/criar2" method="GET"><button type="submit" class="a">Refazer Quiz</button></form>\n')
+            cri.write('<form name="send-form" class="send-form" action="/preview" method="POST"><button type="submit" class="a" method="POST" action="/preview">Continuar</button></form>\n')
+            cri.write('</body>\n')
+            cri.write('</html>\n')
+
         #cria a funcao para rodar o quiz no flask
         with open('{}funcaoquiz.txt'.format(pathquiz),'w') as f:
             f.write("from flask import request\n")
@@ -265,29 +281,29 @@ def criar2():
             f.write("\treturn lista\n")
         subprocess.Popen("Copyfuncao.py", shell=True)
 
-        return redirect("/")
+        return redirect("/preview")
 
-# @app.route("/emailquiz", methods=["GET","POST"])
-# def emailquiz():
-#     if request.method == "GET":
-#         return render_template("emailquiz.html")
-#     if request.method == "POST":
-#         if request.form['email'] != '':
-#             emailto = request.form['email']
-#         else:
-#             with open('email.txt', 'r') as bb:
-#                 emailto = bb.read()
-#         try:
-#             mail2.send(emailto)
-#             print("Enviado")
-#         except:
-#             print("ERROR")
-#         return redirect("/quizenviado")
-#
-# @app.route("/quizenviado", methods=["GET","POST"])
-# def quizenviado():
-#     if request.method == "GET":
-#         y=requst.form['email']
-#         return render_template("quizenviado.html", x=y)
-#     if request.method == "POST":
-#         return redirect("/")
+@app.route("/preview", methods=["GET","POST"])
+def preview():
+    if request.method == "GET":
+        return render_template("preview.html")
+    if request.method == "POST":
+        return redirect("/emailquiz")
+
+@app.route("/emailquiz", methods=["GET","POST"])
+def emailquiz():
+    if request.method == "GET":
+        return render_template("emailquiz.html")
+    if request.method == "POST":
+        # if request.form['email'] != '':
+        #     emailto = request.form['email']
+        # else:
+        #     with open('email.txt', 'r') as bb:
+        #         emailto = bb.read()
+        #     #mail2.send(emailto)
+        #     print("Enviado")
+        return redirect("/quizenviado")
+
+@app.route("/quizenviado", methods=["GET","POST"])
+def quizenviado():
+    return render_template("fim.html")
