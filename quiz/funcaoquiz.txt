@@ -2,18 +2,14 @@ from flask import request
 def multiplaescolha(pergunta):
 	lista=[]
 	x = request.form[pergunta]
-	if pergunta=="1": 
+	if pergunta=="vai funcionar?": 
 		if x=="0":
-			lista=['thor']
+			lista=['sim']
 		if x=="1":
-			lista=['iron man']
-		if x=="2":
-			lista=['spider man']
-	if pergunta=="2": 
+			lista=['nao']
+	if pergunta=="qual seu nome": 
 		if x=="0":
-			lista=['thor', ' iron man']
+			lista=['sim']
 		if x=="1":
-			lista=['spider man']
-		if x=="2":
-			lista=['black panther']
+			lista=['nao']
 	return lista

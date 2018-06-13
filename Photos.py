@@ -21,7 +21,7 @@ with open('variaveis.json','r') as variaveis:
     b_mask = cv2.bitwise_not(f_mask)
     f_image = f_image[:, :, 0:3]
 
-    f_size = 570
+    f_size = 550
     f_ratio = float(f_size)
 
     b_size = 2000

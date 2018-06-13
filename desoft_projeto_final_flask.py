@@ -8,7 +8,6 @@ import funcao as f
 import maxkey as m
 import idade as anos
 import img_mail as mail
-import mail2 as mail2
 import cv2
 import json
 from random import randint
@@ -17,6 +16,7 @@ from shutil import copyfile
 from copy_file import *
 from delete_file import delete_file
 import subprocess
+from zip_file import zip_file
 
 app = Flask(__name__,static_url_path="")
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 5
@@ -157,8 +157,10 @@ def thanos():
     return render_template('thanos.html')
 
 #---------------------------------------------CRIE SEU QUIZ---------------------------------------------------------------
-pathquiz      = os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/quiz/")
+pathquiz = os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/quiz/")
 pathtemplates = os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/templates/")
+pathjogo = os.path.join(os.path.expanduser("~"), "Documents/GitHub/Quiz_Avengers/")
+
 
 @app.route("/criar", methods=['POST','GET'])
 def criar():
@@ -236,31 +238,16 @@ def criar2():
         with open('{}/templates/Quizfinal.html'.format(pathquiz),'w') as cri:
             cri.write('<html>\n')
             cri.write('<head><link rel="stylesheet" type="text/css" href="/style/stylequiz.css"></head>\n')
-            cri.write('<body bgcolor="#091C4B"><font color="white" size="6"><h1>Quiz</h1>\n')
+            cri.write('<body bgcolor="#091C4B"><font color="white" size="6"><center><h1>Quiz</h1></center>\n')
             cri.write('<form name="send-form" class="send-form" method="POST" action="/quiz">\n')
             for i in range(0,dicjson["Qperg"]):
                 re_form=request.form['pergunta{}'.format(i)]
                 cri.write('<label><font color="white">{}</label><br><br> \n'.format(re_form))
                 for a in range(0,dicjson["Qopc"]):
                     re_form2=request.form['opcao{}_{}'.format(i,a)]
-                    cri.write('<label class="container">{}<input type="radio" name="{}" value="{}" required><span class="checkmark"/></label><br> \n  '.format(re_form2,re_form,a))
-            cri.write('<button class="a" type="sumbit">OK</button></form>\n')
-            cri.write('</body>\n')
-            cri.write('</html>\n')
-
-        #cria o HTML do preview
-        with open('{}preview.html'.format(pathtemplates),'w') as cri:
-            cri.write('<html>\n')
-            cri.write('<head><link rel="stylesheet" type="text/css" href="/style/stylequiz.css"></head>\n')
-            cri.write('<body bgcolor="#091C4B"><font color="white" size="6"><h1>Preview do seu quiz</h1>\n')
-            for i in range(0,dicjson["Qperg"]):
-                re_form=request.form['pergunta{}'.format(i)]
-                cri.write('<label><font color="white">{}</label><br><br> \n'.format(re_form))
-                for a in range(0,dicjson["Qopc"]):
-                    re_form2=request.form['opcao{}_{}'.format(i,a)]
-                    cri.write('<label class="container">{}<input type="radio" name="{}" required><span class="checkmark"/></label><br> \n  '.format(re_form2,re_form))
-            cri.write('<form name="send-form" class="send-form" action="/criar2" method="GET"><button type="submit" class="a">Refazer Quiz</button></form>\n')
-            cri.write('<form name="send-form" class="send-form" action="/preview" method="POST"><button type="submit" class="a" method="POST" action="/preview">Continuar</button></form>\n')
+                    cri.write('<label class="container">{}<input type="radio" name="{}" value="{}" required><span class="checkmark"/></label><br>\n '.format(re_form2,re_form,a))
+                cri.write('<br><br>\n')
+            cri.write('<center><button class="a" type="sumbit">OK</button></center></form>\n')
             cri.write('</body>\n')
             cri.write('</html>\n')
 
@@ -281,29 +268,11 @@ def criar2():
             f.write("\treturn lista\n")
         subprocess.Popen("Copyfuncao.py", shell=True)
 
-        return redirect("/preview")
+        return redirect("/fim")
 
-@app.route("/preview", methods=["GET","POST"])
-def preview():
-    if request.method == "GET":
-        return render_template("preview.html")
-    if request.method == "POST":
-        return redirect("/emailquiz")
-
-@app.route("/emailquiz", methods=["GET","POST"])
-def emailquiz():
-    if request.method == "GET":
-        return render_template("emailquiz.html")
-    if request.method == "POST":
-        # if request.form['email'] != '':
-        #     emailto = request.form['email']
-        # else:
-        #     with open('email.txt', 'r') as bb:
-        #         emailto = bb.read()
-        #     #mail2.send(emailto)
-        #     print("Enviado")
-        return redirect("/quizenviado")
-
-@app.route("/quizenviado", methods=["GET","POST"])
-def quizenviado():
+@app.route("/fim", methods=["GET","POST"])
+def fim():
+    pathdesktop = os.path.join(os.path.expanduser("~"), "Desktop/")
+    zip_file("seu_quiz","{}".format(pathquiz))
+    copy_file_mor("{}seu_quiz.zip".format(pathjogo), "{}seu_quiz.zip".format(pathdesktop))
     return render_template("fim.html")

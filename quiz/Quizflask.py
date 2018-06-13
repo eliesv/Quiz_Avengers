@@ -30,8 +30,10 @@ def inicial():
             lista_resps = funcaoquiz.multiplaescolha(pergunta)
             for e in lista_resps:
                 dicfinal[e] += 1
+        print(dicfinal)
 
         vencedor = maxkey(dicfinal)
+        print(vencedor)
         with open('vencedor.txt','w') as v:
             v.write(vencedor)
 
