@@ -177,7 +177,7 @@ def criar():
         #Cria HTML para Criar quiz a partir do numero de perguntas e opcoes
         with open('{}criar2.html'.format(pathtemplates),'w') as cr:
             cr.write('<html><head><link rel="stylesheet" type="text/css" href="style/style.css"><link href="https://fonts.googleapis.com/css?family=Marvel" rel="stylesheet"><style>input[type=text] {width: 20%;padding: 12px 20px;margin: 8px 0;box-sizing: border-box;}</style></head>\n')
-            cr.write('<center><br><body bgcolor="#091C4B"><font color="white"><h1>Criar meu Quiz</h1><br>Escreva as perguntas, suas opcoes e qual(is) resultados serao afetados por cada opcao.<br> Cada opcao da um ponto para cada resultado escolhido.<br> Para pontuar mais de um resultado por opcao, separe-os por virgulas.<br> Tome cuidado para escrever o mesmo resutado sempre exatamente da mesma forma!<br>Não use caracteres como ce cedilha ou acentos!<br><br>\n')
+            cr.write('<center><br><body bgcolor="#091C4B"><font color="white"><h1>Criar meu Quiz</h1><br>Escreva as perguntas, suas opcoes e qual(is) resultados serao afetados por cada opcao.<br> Cada opcao da um ponto para cada resultado escolhido.<br> Para pontuar mais de um resultado por opcao, separe-os por virgulas.<br> Tome cuidado para escrever o mesmo resutado sempre exatamente da mesma forma!<br>Nao use caracteres como ce cedilha ou acentos!<br><br>\n')
             cr.write('<form name="send-form" class="send-form" method="POST" action="/criar2">\n')
             cr.write('\n')
             for i in range(0,dicjson["Qperg"]):
@@ -258,7 +258,7 @@ def criar2():
                 re_form=request.form['pergunta{}'.format(i)]
                 f.write('\tif pergunta=="{}": \n'.format(re_form))
                 for a in range(0,dicjson["Qopc"]):
-                    f.write('\t\tif x=={}:\n'.format(a))
+                    f.write('\t\tif x=="{}":\n'.format(a))
                     re_form3=request.form['resposta{}_{}'.format(i,a)]
                     lista=re_form3.split(",")
                     f.write('\t\t\tlista={}\n'.format(lista))

@@ -26,19 +26,12 @@ def inicial():
             perguntas=r.read()
             lista_pergs = perguntas.split(",")
 
-        print(lista_pergs)
-
         for pergunta in lista_pergs:
-            print(pergunta)
-            print(request.form[pergunta])
             lista_resps = funcaoquiz.multiplaescolha(pergunta)
-            print(lista_resps)
             for e in lista_resps:
                 dicfinal[e] += 1
 
-        print(dicfinal)
         vencedor = maxkey(dicfinal)
-        print(vencedor)
         with open('vencedor.txt','w') as v:
             v.write(vencedor)
 
